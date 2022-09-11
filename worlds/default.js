@@ -121,6 +121,7 @@ export function init(Constants) {
                 rotation: [0, -0.01904446484351159, 0, 0.9998186377332763],    
                 layers: ["walk"],    
                 name: "/treepack4_small.glb",    
+                // dataLocation: "./assets/3D/treepack4_small.glb",
                 dataLocation: "36bHrAibIhhNDw5QTWfleb-P1ufV9Gp4EKM28m0ss4iUXkJCRkUMGRlQX1pTRRhDRRhVRFlHQ1NCGF9ZGUMZYHp-UmwPBQdUcFVsckMHd19iAUJ4X3RCDlx8BBlfWRhVRFlHQ1NCGFJPWFdAU0RFUxlQZlFiYnJBQEIEAldxD1VnRUcHbHppUgN6blJjUXpvT3xVZ0J7bm5_ckZ_GVJXQlcZY29dBAJQYQFHfVdnWXxRUw4CbmZbZntpY0R9WHlPV1xaeX9RaUQBBhtUUQ",    
                 dataScale: [1.5, 1.5, 1.5],    
                 fileName: "/treepack4_small.glb",    
