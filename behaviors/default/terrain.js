@@ -99,14 +99,14 @@ class TerrainPawn {
  //       let waterFrag = await fetch('./assets/shaders/water.frag.glsl').then((resp) => resp.text());
 
         return Promise.all([
-            //import("/assets/src/skydome.js"),
-            import("/assets/src/heightfield.js"),
-            import("/assets/src/grass.js"),
-            import("/assets/src/terrain.js"),
-            import("/assets/src/terramap.js"),
-            // import("/assets/src/water.js"),
-            import("/assets/src/WaterReflector.js"),
-            import("/assets/src/simplex.js")
+            //import(ASSETS + "/src/skydome.js"),
+            import(ASSETS + "/src/heightfield.js"),
+            import(ASSETS + "/src/grass.js"),
+            import(ASSETS + "/src/terrain.js"),
+            import(ASSETS + "/src/terramap.js"),
+            // import(ASSETS + "/src/water.js"),
+            import(ASSETS + "/src/WaterReflector.js"),
+            import(ASSETS + "/src/simplex.js")
         ]).then(([heightfield_S, grass_S, terrain_S, terramap_S, water_S, simplex_S]) => {
 
             var BEACH_TRANSITION_LOW = 0.31;

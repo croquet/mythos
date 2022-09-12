@@ -22,8 +22,8 @@ class FireballPawn {
     setup() {
         this.listen("updateFire",this.update);
         return Promise.all([
-            import("/assets/shaders/fireball.frag.js"),
-            import("/assets/shaders/fireball.vert.js"),
+            import(ASSETS + "/shaders/fireball.frag.js"),
+            import(ASSETS + "/shaders/fireball.vert.js"),
         ]).then(([fragmentShader, vertexShader]) => {
 
         let explosionTexture = new THREE.TextureLoader().load( "./assets/images/explosion.png" );
