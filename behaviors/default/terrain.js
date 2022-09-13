@@ -79,7 +79,7 @@ class TerrainPawn {
 
     async constructHillside() {
         const THREE = Microverse.THREE;
-        let assetsDir = window.ASSETs || "/assets";
+        let assetsDir = window.ASSETS || "/assets";
 
         // images
         let heightmap_I = await this.loadImageAsset("./assets/images/heightmap.jpg");
