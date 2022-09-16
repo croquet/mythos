@@ -1,18 +1,18 @@
 {
-  "name": "my-croquet-microverse-world",
+  "name": "mythos",
   "version": "1.0.0",
-  "description": "A World in Croquet Microverse",
+  "description": "A Mythical World in Croquet Microverse",
   "scripts": {
     "start": "npm-run-all --parallel file-server watch-server",
     "file-server": "file-server --port 9684",
     "watch-server": "watch-server"
   },
   "dependencies": {
-    "@croquet/microverse-library": "0.1.8"
+    "@croquet/microverse-library": "^0.1.11"
   },
   "devDependencies": {
-    "npm-run-all": "^4.1.5",
+    "@croquet/microverse-file-server": "^1.0.4",
     "@croquet/microverse-watch-server": "^1.0.6",
-    "@croquet/microverse-file-server": "^1.0.4"
+    "npm-run-all": "^4.1.5"
   }
 }

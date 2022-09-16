@@ -79,10 +79,11 @@ class TerrainPawn {
 
     async constructHillside() {
         const THREE = Microverse.THREE;
+        let assetsDir = window.ASSETS || "/assets";
 
         // images
-        let heightmap_I = this.loadImageAsset("./assets/images/heightmap.jpg");
-        let noise_I = this.loadImageAsset("./assets/images/noise.jpg");
+        let heightmap_I = await this.loadImageAsset("./assets/images/heightmap.jpg");
+        let noise_I = await this.loadImageAsset("./assets/images/noise.jpg");
         // textures
         let grass_T = this.loadTextureAsset("./assets/images/grass.jpg");
         let terrain1_T = this.loadTextureAsset("./assets/images/terrain1.jpg");
@@ -99,14 +100,14 @@ class TerrainPawn {
  //       let waterFrag = await fetch('./assets/shaders/water.frag.glsl').then((resp) => resp.text());
 
         return Promise.all([
-            //import(ASSETS + "/src/skydome.js"),
-            import(ASSETS + "/src/heightfield.js"),
-            import(ASSETS + "/src/grass.js"),
-            import(ASSETS + "/src/terrain.js"),
-            import(ASSETS + "/src/terramap.js"),
-            // import(ASSETS + "/src/water.js"),
-            import(ASSETS + "/src/WaterReflector.js"),
-            import(ASSETS + "/src/simplex.js")
+            //import(assetsDir + "/src/skydome.js"),
+            import(assetsDir + "/src/heightfield.js"),
+            import(assetsDir + "/src/grass.js"),
+            import(assetsDir + "/src/terrain.js"),
+            import(assetsDir + "/src/terramap.js"),
+            // import(assetsDir + "/src/water.js"),
+            import(assetsDir + "/src/WaterReflector.js"),
+            import(assetsDir + "/src/simplex.js")
         ]).then(([heightfield_S, grass_S, terrain_S, terramap_S, water_S, simplex_S]) => {
 
             var BEACH_TRANSITION_LOW = 0.31;
@@ -231,9 +232,12 @@ class TerrainPawn {
 
     loadImageAsset(URL){
         let assetManager = this.service("AssetManager").assetManager;
-        return assetManager.fillCacheIfAbsent(URL, () => {
-            return new Microverse.THREE.ImageLoader().load(URL);
-        }, this.id);
+        
+        return new Promise((resolve, reject) => {
+            new Microverse.THREE.ImageLoader().load(URL, (image) => {
+                resolve(assetManager.fillCacheIfAbsent(URL, () => image, this.id));
+            });
+        });
     }
 
     loadFileAsset(URL){
