@@ -53,6 +53,11 @@ class TerrainPawn {
     setup() {
 //console.log("Constructing hillside");
         this.numGrassBlades = 500000;
+        let blades = new URL(window.location).searchParams.get("blades");
+        if (blades) {
+            this.numGrassBlades = parseInt(blades, 10);
+        }
+
         this.grassPatchRadius = 175.0;
         this.heightFieldSize = 3072.0;
         this.heightFieldHeight = 180.0;
