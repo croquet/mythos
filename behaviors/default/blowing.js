@@ -6,7 +6,7 @@
 
 class BlowingActor {
     setup() {
-        this.future(20).update();
+       // this.future(20).update();
     }
 
 
@@ -23,9 +23,7 @@ class BlowingPawn {
     }
 
     modelLoaded(){
-        console.log("DO I GET HERE?", this.now())
         this.object = this.shape.children[0];
-        console.log(this.object);
 
         let i =0;
         this.object.traverse( c => {
@@ -57,7 +55,6 @@ class BlowingPawn {
             if(part === 0){
                 s.push(...s2);
             }
-            console.log(s)
             shader.uniforms.time = { value: 0 };
             shader.vertexShader = 'uniform float time;\n' + shader.vertexShader;
             shader.vertexShader = shader.vertexShader.replace(

@@ -136,14 +136,14 @@ export function init(Constants) {
         },
         {
             card: {
-                dataLocation: "./assets/3D/temple_2.glb",
+                dataLocation: "./assets/3D/temple_wmoss.glb",
                 dataScale: [1,1,1],
-                fileName: "/temple 2.glb",
+                fileName: "/temple_wmoss.glb",
                 layers: [
-                    "walk"
+                    "walk", "pointer"
                 ],
                 modelType: "glb",
-                name: "/temple 2.glb",
+                name: "/temple_wmoss.glb",
                 rotation: [
                     0,
                     -0.8375393574138387,
