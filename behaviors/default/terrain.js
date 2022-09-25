@@ -2,9 +2,7 @@
 // Generates an infinite procedural hillside with blowing grass
 //
 // To do:
-// turn off sound on phones - terrible w/o headphones
-// horses
-// the tree needs to sway in the wind
+
 // interface to turn music/sound on/off (and other things)
 // stones
 // switch to PDF viewer w/ presentation describing the world.
@@ -16,6 +14,9 @@
 // set wind volume to height
 // move the water plane to be just in front of the avatar - can be smaller and cover more area
 // 
+// X turn off sound on phones - terrible w/o headphones
+// X horses
+// X the tree needs to sway in the wind
 // X burning ball - press "f" to view
 // X Many, many bots - press 1 to increase by 10, 2 to increase by 100. Max is 5000.
 // X start screen - use a plane in front of avatar?
@@ -53,11 +54,6 @@ class TerrainPawn {
     setup() {
 //console.log("Constructing hillside");
         this.numGrassBlades = 500000;
-        let blades = new URL(window.location).searchParams.get("blades");
-        if (blades) {
-            this.numGrassBlades = parseInt(blades, 10);
-        }
-
         this.grassPatchRadius = 175.0;
         this.heightFieldSize = 3072.0;
         this.heightFieldHeight = 180.0;
@@ -84,11 +80,10 @@ class TerrainPawn {
 
     async constructHillside() {
         const THREE = Microverse.THREE;
-        let assetsDir = window.ASSETS || "/assets";
 
         // images
-        let heightmap_I = await this.loadImageAsset("./assets/images/heightmap.jpg");
-        let noise_I = await this.loadImageAsset("./assets/images/noise.jpg");
+        let heightmap_I = this.loadImageAsset("./assets/images/heightmap.jpg");
+        let noise_I = this.loadImageAsset("./assets/images/noise.jpg");
         // textures
         let grass_T = this.loadTextureAsset("./assets/images/grass.jpg");
         let terrain1_T = this.loadTextureAsset("./assets/images/terrain1.jpg");
@@ -105,14 +100,14 @@ class TerrainPawn {
  //       let waterFrag = await fetch('./assets/shaders/water.frag.glsl').then((resp) => resp.text());
 
         return Promise.all([
-            //import(assetsDir + "/src/skydome.js"),
-            import(assetsDir + "/src/heightfield.js"),
-            import(assetsDir + "/src/grass.js"),
-            import(assetsDir + "/src/terrain.js"),
-            import(assetsDir + "/src/terramap.js"),
-            // import(assetsDir + "/src/water.js"),
-            import(assetsDir + "/src/WaterReflector.js"),
-            import(assetsDir + "/src/simplex.js")
+            //import("/assets/src/skydome.js"),
+            import("/assets/src/heightfield.js"),
+            import("/assets/src/grass.js"),
+            import("/assets/src/terrain.js"),
+            import("/assets/src/terramap.js"),
+            // import("/assets/src/water.js"),
+            import("/assets/src/WaterReflector.js"),
+            import("/assets/src/simplex.js")
         ]).then(([heightfield_S, grass_S, terrain_S, terramap_S, water_S, simplex_S]) => {
 
             var BEACH_TRANSITION_LOW = 0.31;
@@ -237,12 +232,9 @@ class TerrainPawn {
 
     loadImageAsset(URL){
         let assetManager = this.service("AssetManager").assetManager;
-        
-        return new Promise((resolve, reject) => {
-            new Microverse.THREE.ImageLoader().load(URL, (image) => {
-                resolve(assetManager.fillCacheIfAbsent(URL, () => image, this.id));
-            });
-        });
+        return assetManager.fillCacheIfAbsent(URL, () => {
+            return new Microverse.THREE.ImageLoader().load(URL);
+        }, this.id);
     }
 
     loadFileAsset(URL){
@@ -253,6 +245,7 @@ class TerrainPawn {
     }
 
     getHeight(pos, eyeHeight){ // given an x,y,z location compute the depth in the height field
+        if(!this.heightField)return 0;
         let z = pos[1];
         let inv = this.invScaleHill; // invert my location to find height
         let hfh = -this.heightField.heightAt(inv*pos[0], -inv*pos[2], true);

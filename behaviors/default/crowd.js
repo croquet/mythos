@@ -124,7 +124,10 @@ class CrowdPawn {
         this.avatar = Microverse.GetPawn( this.actor.service("PlayerManager").players.get(this.viewId).id);
         this.addEventListener("keyDown", "handleKeyEvents");
         this.color =  Math.floor((128+Math.random() * 127 )) << 16 ^ (128+Math.floor(Math.random() * 127)) << 8 ^ (128+Math.floor(Math.random() * 127) << 0);
-        console.log("COLOR:", this.color)
+        console.log("COLOR:", this.color);
+
+        this.subscribe("menu", "addBots", this.addCrowd);
+        this.subscribe("menu", "killBots", this.removeCrowd);
     }
 
     installMask(mask){
@@ -148,7 +151,7 @@ class CrowdPawn {
 
     updateCrowd(){
         // get the terrain
-        this.avatar.pointerCapture(this._target); // this is needed
+        //this.avatar.pointerCapture(this._target); // this is needed
         let terrainLayer = this.service("ThreeRenderManager").threeLayer("terrain");
         let crowd = this.actor.crowd; // array of the crowd
 
@@ -186,33 +189,17 @@ class CrowdPawn {
         }
     }
 
-    // key management should be in its own behavior w/ publish/subscribe
-    handleKeyEvents(event){
+    addCrowd(){
         let cSize = this.actor.crowdSize;
-        switch(event.key){
-            case '/': // turn sound on and off
-                this.publish("global", "startStopWind");
-                break;
-            case '0':
-                this.setCrowdSize(0);
-                break;
-            case '1': 
-                this.setCrowdSize(cSize+10);
-                break;
-            case '2':
-                this.setCrowdSize(cSize+100);
-                break;
-            //case '3':
-            //    this.setCrowdSize(cSize+1000);
-            //    break;
-            case '4':
-                this.setCrowdSize(Math.max(0,cSize-100));
-                break;
-            case 'f':
-                this.publish("global","FireballToggle");
-                break;
-        };
+        this.setCrowdSize(cSize+100);
+    }
 
+    removeCrowd(){
+        this.setCrowdSize(0);
+    }
+
+    toggleSound(){
+        this.publish("global", "startStopWind");
     }
 
     setCrowdSize(size){

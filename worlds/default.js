@@ -11,7 +11,7 @@ export function init(Constants) {
     Constants.UserBehaviorDirectory = "behaviors/default";
     Constants.UserBehaviorModules = [
         "lights.js", "terrain.js", "gridFloor.js", "ambientSound.js", "circle.js", "fireball.js",
-        "blowing.js", "crowd.js", "horse.js"
+        "blowing.js", "crowd.js", "horse.js", "menus.js"
     ];
 
 
@@ -45,7 +45,6 @@ export function init(Constants) {
             }
         },
 
-        
         {
             card: {
                 name: "fireball",
@@ -98,7 +97,7 @@ export function init(Constants) {
         {
             card: {
                 name:"Terrain",
-                behaviorModules: ["Terrain"],
+                behaviorModules: ["Terrain", "Menus"],
                 layers: ["terrain"],
                 type: "object",
                 translation:[0, 0, 0],

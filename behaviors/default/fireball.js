@@ -6,7 +6,7 @@ class FireballActor {
     setup() {
         this.update();
         this.fireballVisible = false;
-        this.subscribe("global","FireballToggle", this.fireballToggle)
+        this.subscribe("menu","FireballToggle", this.fireballToggle)
     }
     update(){
         this.future(50).update();

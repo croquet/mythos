@@ -6,7 +6,7 @@
 
 class BlowingActor {
     setup() {
-       // this.future(20).update();
+        this.future(20).update();
     }
 
 

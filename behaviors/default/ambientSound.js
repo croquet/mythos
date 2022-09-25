@@ -19,7 +19,7 @@ class AmbientSoundPawn {
         console.log(this.volume, this.maxVolume)
         this.subscribe("global", "setWind", this.setWind);
         this.subscribe("global", "scaleWind", this.setScaleWind);
-        this.subscribe("global", "startStopWind", this.startStopWind);
+        this.subscribe("menu", "startStopWind", this.startStopWind);
         this.addEventListener("pointerDown", "trigger");
         this.loadSplashScreen();
         this.handler = () => this.start();
