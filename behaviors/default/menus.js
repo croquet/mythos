@@ -23,10 +23,14 @@ class MenuPawn {
             menuItemDiv.innerHTML = 
                 `<div id="worldMenu-foo" class="menu-label menu-item">
                 <span class="menu-label-text">${menuText}</span>
+                <div class="menu-icon"></div>
                 </div>`;
             let menuItem = menuItemDiv.firstChild;
-            // need to learn how to do this
-            // if(menuImage)menuItem.style.setProperty("background-image", `url(${menuImage}) width='22' height='22' fill="none"`);
+            if (menuImage) {
+                let menuIcon = menuItem.querySelector(".menu-icon");
+                menuIcon.style.setProperty("background-image", `url(${menuImage})`);
+                menuIcon.style.setProperty("background-size", "contain");
+            }
             menuItem.addEventListener("click", callback);
             menu.appendChild(menuItem);
 
