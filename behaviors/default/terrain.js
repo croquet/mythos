@@ -2,18 +2,17 @@
 // Generates an infinite procedural hillside with blowing grass
 //
 // To do:
-
-// interface to turn music/sound on/off (and other things)
+//
 // stones
 // switch to PDF viewer w/ presentation describing the world.
 // birds
 // butterflies
-// music - needs Aran's library
-// event handler behavior
-// big weenie
+// music - needs Mediaverse library
+// big weenie (large visible object in the distance)
 // set wind volume to height
 // move the water plane to be just in front of the avatar - can be smaller and cover more area
 // 
+// X interface to turn music/sound on/off (and other things)
 // X turn off sound on phones - terrible w/o headphones
 // X horses
 // X the tree needs to sway in the wind
@@ -89,8 +88,6 @@ class TerrainPawn {
         let terrain1_T = this.loadTextureAsset("./assets/images/terrain1.jpg");
         let terrain2_T = this.loadTextureAsset("./assets/images/terrain2.jpg");
         let waterNormals = this.loadTextureAsset("./assets/images/waternormals.jpg");
-       // let skydome_T = this.loadTextureAsset("./assets/images/skydome.jpg");
-       // let skyenv_T = this.loadTextureAsset("./assets/images/skyenv.jpg");
         // shaders
         let grassVert = await fetch('./assets/shaders/grass.vert.glsl').then((resp) => resp.text());
         let grassFrag = await fetch('./assets/shaders/grass.frag.glsl').then((resp) => resp.text());
@@ -100,12 +97,10 @@ class TerrainPawn {
  //       let waterFrag = await fetch('./assets/shaders/water.frag.glsl').then((resp) => resp.text());
 
         return Promise.all([
-            //import("/assets/src/skydome.js"),
             import("/assets/src/heightfield.js"),
             import("/assets/src/grass.js"),
             import("/assets/src/terrain.js"),
             import("/assets/src/terramap.js"),
-            // import("/assets/src/water.js"),
             import("/assets/src/WaterReflector.js"),
             import("/assets/src/simplex.js")
         ]).then(([heightfield_S, grass_S, terrain_S, terramap_S, water_S, simplex_S]) => {
@@ -316,8 +311,7 @@ class TerrainPawn {
         assetManager.revoke("./assets/images/noise.jpg", this.id);
         assetManager.revoke("./assets/images/grass.jpg", this.id);
         assetManager.revoke("./assets/images/terrain1.jpg", this.id);
-        assetManager.revoke("./assets/images/terrain2.jpg", this.id);
-        assetManager.revoke("./assets/images/skydome.jpg", this.id);        
+        assetManager.revoke("./assets/images/terrain2.jpg", this.id);       
         assetManager.revoke("./assets/images/skyenv.jpg", this.id);
     }
 }

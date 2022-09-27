@@ -1,6 +1,7 @@
 //"use strict";
 // LICENSE: MIT
 // Copyright (c) 2016 by Mike Linkovich
+// modified by David A Smith, Croquet Corporation
 //
 // Creates & animates a large patch of grass to fill the foreground.
 // One simple blade of grass mesh is repeated many times using instanced arrays.

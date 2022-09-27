@@ -14,6 +14,7 @@
  *
  * --------------------
  * TypeScriptified 2016
+ * UnTypeScriptified 2021 by David A Smith, Croquet Corporation
  */
 
 var Grad = /** @class */ (function () {
