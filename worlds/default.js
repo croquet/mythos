@@ -113,7 +113,7 @@ export function init(Constants) {
 
         {
             card: {
-                name: "image card",
+                name: "Gallery Card",
                 behaviorModules: ["ReplaceWorld"],
                 targetURL: "https://croquet.io/microverse",
                 translation: rotateTo([0, 1.5, 4], -11.963, 2*Math.PI/7), 
@@ -135,12 +135,12 @@ export function init(Constants) {
         },
         {
             card: {
-                name: "image card",
+                name: "Physics Card",
                 translation: rotateTo([0, 1.5, 4], -11.963, 3*Math.PI/7), 
                 //    translation: [4.440892098500626e-16, 2.5357677795120512, -7.9631457611584615],
                 //rotation: [0, Math.PI / 2, 0],
                 behaviorModules: ["ReplaceWorld"],
-                targetURL: "https://croquet.io/microverse/?world=test",
+                targetURL: "https://croquet.github.io/physics/",
                 rotation: [0, 3*Math.PI/7, 0],
                 layers: ["pointer"],
                 scale: [4, 4, 4],
@@ -158,7 +158,7 @@ export function init(Constants) {
         {
             card: {
                 name: "About Mythos",
-                translation: rotateTo([0, 1.5, 4], -11.963, 4*Math.PI/7), //[-5, 2.1, -7.963],
+                translation: rotateTo([0, 1.5, 4], -11.963, 5*Math.PI/7), //[-5, 2.1, -7.963],
                 scale: [4, 4, 4],
                 rotation: [0, 4*Math.PI/7, 0],
                 layers: ["pointer"],
