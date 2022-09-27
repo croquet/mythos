@@ -11,29 +11,27 @@ export function init(Constants) {
     Constants.UserBehaviorDirectory = "behaviors/default";
     Constants.UserBehaviorModules = [
         "lights.js", "terrain.js", "ambientSound.js", "fireball.js",
-        "blowing.js", "crowd.js", "horse.js", "menus.js"
+        "blowing.js", "crowd.js", "horse.js", "menus.js", "replaceWorld.js"
     ];
 
-
     Constants.DefaultCards = [
-        
-            {
-                card: {
-                    name: "ambient sound",
-                    translation: [0, 0, -2],
-                    layers: ["pointer"],
-                    type: "sound",
-                    behaviorModules: ["AmbientSound"],
-                    dataType: "acc",
-                    dataLocation: "./assets/sounds/WindAmbience.aac",
-                    textureLocation: "./assets/images/mythos.png",
-                    loop: true,
-                    volume: 0.2,
-                    maxVolume: 0.3
-                },
-                id: "ambientSound"
+        {
+            card: {
+                name: "ambient sound",
+                translation: [0, 0, -2],
+                layers: ["pointer"],
+                type: "sound",
+                behaviorModules: ["AmbientSound"],
+                dataType: "acc",
+                dataLocation: "./assets/sounds/WindAmbience.aac",
+                textureLocation: "./assets/images/mythos.png",
+                loop: true,
+                volume: 0.2,
+                maxVolume: 0.3
             },
-            {
+            id: "ambientSound"
+        },
+        {
             card: {
                 name: "light",
                 layers: ["light"],
@@ -77,7 +75,10 @@ export function init(Constants) {
         },
         {
             card: {
-                name: "image card",
+                name: "Croquet Card",
+                behaviorModules: ["ReplaceWorld"],
+                targetURL: "https://croquet.io/microverse/?world=test",
+
                 translation: [0, 2.536, -7.963],
                 //    translation: [4.440892098500626e-16, 2.5357677795120512, -7.9631457611584615],
                 //rotation: [0, Math.PI / 2, 0],
@@ -135,18 +136,18 @@ export function init(Constants) {
         },
         {
             card:{
-                translation: [14.323492647614785, -2.7804596526792222, -5.391810022345661],    
-                rotation: [0, -0.01904446484351159, 0, 0.9998186377332763],    
-                layers: ["walk"],    
-                name: "/treepack4_small.glb",    
+                translation: [14.323492647614785, -2.7804596526792222, -5.391810022345661],
+                rotation: [0, -0.01904446484351159, 0, 0.9998186377332763],
+                layers: ["walk"],
+                name: "/treepack4_small.glb",
                 // dataLocation: "./assets/3D/treepack4_small.glb",
-                dataLocation: "36bHrAibIhhNDw5QTWfleb-P1ufV9Gp4EKM28m0ss4iUXkJCRkUMGRlQX1pTRRhDRRhVRFlHQ1NCGF9ZGUMZYHp-UmwPBQdUcFVsckMHd19iAUJ4X3RCDlx8BBlfWRhVRFlHQ1NCGFJPWFdAU0RFUxlQZlFiYnJBQEIEAldxD1VnRUcHbHppUgN6blJjUXpvT3xVZ0J7bm5_ckZ_GVJXQlcZY29dBAJQYQFHfVdnWXxRUw4CbmZbZntpY0R9WHlPV1xaeX9RaUQBBhtUUQ",    
-                dataScale: [1.5, 1.5, 1.5],    
-                fileName: "/treepack4_small.glb",    
+                dataLocation: "36bHrAibIhhNDw5QTWfleb-P1ufV9Gp4EKM28m0ss4iUXkJCRkUMGRlQX1pTRRhDRRhVRFlHQ1NCGF9ZGUMZYHp-UmwPBQdUcFVsckMHd19iAUJ4X3RCDlx8BBlfWRhVRFlHQ1NCGFJPWFdAU0RFUxlQZlFiYnJBQEIEAldxD1VnRUcHbHppUgN6blJjUXpvT3xVZ0J7bm5_ckZ_GVJXQlcZY29dBAJQYQFHfVdnWXxRUw4CbmZbZntpY0R9WHlPV1xaeX9RaUQBBhtUUQ",
+                dataScale: [1.5, 1.5, 1.5],
+                fileName: "/treepack4_small.glb",
                 behaviorModules: ["Blowing"],
-                modelType: "glb",    
-                shadow: true,    
-                singleSided: true,    
+                modelType: "glb",
+                shadow: true,
+                singleSided: true,
                 noFog: true,
                 type: "3d",
                 flatten: true
