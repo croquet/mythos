@@ -11,9 +11,20 @@ export function init(Constants) {
     Constants.UserBehaviorDirectory = "behaviors/default";
     Constants.UserBehaviorModules = [
         "lights.js", "terrain.js", "ambientSound.js", "fireball.js",
-        "blowing.js", "crowd.js", "horse.js", "menus.js"
+        "blowing.js", "crowd.js", "horse.js", "menus.js", "urlLink.js"
     ];
 
+    // rotates an object around a center point.
+    function rotateTo(center, length, angle){
+        let pos = [];
+        pos.push(length*Math.sin(angle));
+        pos.push(0);
+        pos.push(length*Math.cos(angle));
+        pos[0]+=center[0];
+        pos[1]=center[1];
+        pos[2]+=center[2];
+        return pos;
+    }
 
     Constants.DefaultCards = [
         
@@ -78,7 +89,7 @@ export function init(Constants) {
         {
             card: {
                 name: "image card",
-                translation: [0, 2.536, -7.963],
+                translation: [0, 1.5, -7.963],
                 //    translation: [4.440892098500626e-16, 2.5357677795120512, -7.9631457611584615],
                 //rotation: [0, Math.PI / 2, 0],
                 layers: ["pointer"],
@@ -86,6 +97,53 @@ export function init(Constants) {
                 type: "2d",
                 textureType: "image",
                 textureLocation: "./assets/images/CroquetLogo_RGB.jpg",
+                cardURL: "https://croquet.io",
+                behaviorModules: ["URLLink"],
+                fullBright: true,
+                frameColor: 0xcccccc,
+                color: 0xffffff,
+                cornerRadius: 0.05,
+                depth: 0.05,
+                shadow: true,
+            }
+        },
+
+        {
+            card: {
+                name: "image card",
+                translation: rotateTo([0, 1.5, 4], -11.963, 2*Math.PI/7), 
+                //    translation: [4.440892098500626e-16, 2.5357677795120512, -7.9631457611584615],
+                //rotation: [0, Math.PI / 2, 0],
+                rotation: [0, 2*Math.PI/7, 0],
+                layers: ["pointer"],
+                scale: [4, 4, 4],
+                type: "2d",
+                textureType: "image",
+                textureLocation: "./assets/images/Croquet Gallery.png",
+                cardURL: "https://croquet.io/microverse",
+                behaviorModules: ["URLLink"],
+                fullBright: true,
+                frameColor: 0xcccccc,
+                color: 0xffffff,
+                cornerRadius: 0.05,
+                depth: 0.05,
+                shadow: true,
+            }
+        },
+        {
+            card: {
+                name: "image card",
+                translation: rotateTo([0, 1.5, 4], -11.963, 3*Math.PI/7), 
+                //    translation: [4.440892098500626e-16, 2.5357677795120512, -7.9631457611584615],
+                //rotation: [0, Math.PI / 2, 0],
+                rotation: [0, 3*Math.PI/7, 0],
+                layers: ["pointer"],
+                scale: [4, 4, 4],
+                type: "2d",
+                textureType: "image",
+                textureLocation: "./assets/images/Fountain.png",
+                cardURL: "https://croquet.io/fountain",
+                behaviorModules: ["URLLink"],
                 fullBright: true,
                 frameColor: 0xcccccc,
                 color: 0xffffff,
@@ -97,9 +155,9 @@ export function init(Constants) {
         {
             card: {
                 name: "About Mythos",
-                translation: [-5, 2.1, -7.963],
+                translation: rotateTo([0, 1.5, 4], -11.963, 4*Math.PI/7), //[-5, 2.1, -7.963],
                 scale: [4, 4, 4],
-                //rotation: [0, -Math.PI / 2, 0],
+                rotation: [0, 4*Math.PI/7, 0],
                 layers: ["pointer"],
                 behaviorModules: ["PDFView"],
                 color: 8947848,
