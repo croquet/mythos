@@ -96,6 +96,25 @@ export function init(Constants) {
         },
         {
             card: {
+                name: "About Mythos",
+                translation: [-5, 2.1, -7.963],
+                scale: [4, 4, 4],
+                //rotation: [0, -Math.PI / 2, 0],
+                layers: ["pointer"],
+                behaviorModules: ["PDFView"],
+                color: 8947848,
+                depth: 0.05,
+                frameColor: 16777215,
+                fullBright: true,
+                modelType: "pdf",
+                pdfLocation: "./assets/PDF/Mythos Readme.pdf",
+                shadow: true,
+                singleSided: true,
+                type: "2d",
+            }
+        },
+        {
+            card: {
                 name:"Terrain",
                 behaviorModules: ["Terrain", "Menus"],
                 layers: ["terrain"],
