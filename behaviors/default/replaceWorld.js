@@ -51,11 +51,12 @@ class ReplaceWorldPawn {
             target.protocol = location.protocol;
             target.host = location.host;
             // append target path to ours. this is designed to work both on /dev/ and /
-            const targetPath = target.pathname.split("/").filter(p => p !== ""); // ["dir", "to", "target"]
-            const ourPath = location.pathname.split("/").filter(p => p !== ""); // ["dev", "mythos"]
-            ourPath.pop(); // ["dev"]
-            ourPath.push(...targetPath); // ["dev", "dir", "to", "target"]
-            target.pathname = ourPath.join("/"); // "/dev/dir/to/target"
+            const targetPath = target.pathname.split("/"); // ["", "dir", "to", "target", "x.html"]
+            targetPath.shift(); // ["dir", "to", "target", "x.html"]
+            const ourPath = location.pathname.split("/"); // ["", "dev", "myapp", "y.html"]
+            ourPath.splice(-2); // ["", "dev"]
+            ourPath.push(...targetPath); // ["", "dev", "dir", "to", "target", "x.html"]
+            target.pathname = ourPath.join("/"); // "/dev/dir/to/target/x.html"
         }
         // remove origin from targetURL if it is the same as the target URL
         // we could also construct an even shorter relative URL, but this is easier
