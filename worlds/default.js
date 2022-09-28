@@ -15,7 +15,7 @@ export function init(Constants) {
         "blowing.js", "crowd.js", "horse.js", "menus.js", "urlLink.js", "replaceWorld.js"
     ];
 
-    
+
     // rotates an object around a center point.
     function rotateTo(center, length, angle){
         let pos = [];
@@ -115,8 +115,9 @@ export function init(Constants) {
             card: {
                 name: "Gallery Card",
                 behaviorModules: ["ReplaceWorld"],
-                targetURL: "https://croquet.github.io/gallery",
-                translation: rotateTo([0, 1.5, 4], -11.963, 2*Math.PI/7), 
+                replaceWorldTargetURL: "https://croquet.github.io/gallery",
+                replaceWorldOverrideOrigin: "(.*\.)?croquet.(io|dev)$",
+                translation: rotateTo([0, 1.5, 4], -11.963, 2*Math.PI/7),
                 //    translation: [4.440892098500626e-16, 2.5357677795120512, -7.9631457611584615],
                 //rotation: [0, Math.PI / 2, 0],
                 rotation: [0, 2*Math.PI/7, 0],
@@ -136,11 +137,12 @@ export function init(Constants) {
         {
             card: {
                 name: "Physics Card",
-                translation: rotateTo([0, 1.5, 4], -11.963, 3*Math.PI/7), 
+                translation: rotateTo([0, 1.5, 4], -11.963, 3*Math.PI/7),
                 //    translation: [4.440892098500626e-16, 2.5357677795120512, -7.9631457611584615],
                 //rotation: [0, Math.PI / 2, 0],
                 behaviorModules: ["ReplaceWorld"],
-                targetURL: "https://croquet.github.io/physics/",
+                replaceWorldTargetURL: "https://croquet.github.io/physics/",
+                replaceWorldOverrideOrigin: "(.*\.)?croquet.(io|dev)$",
                 rotation: [0, 3*Math.PI/7, 0],
                 layers: ["pointer"],
                 scale: [4, 4, 4],
