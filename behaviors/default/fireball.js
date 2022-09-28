@@ -21,7 +21,7 @@ class FireballActor {
 class FireballPawn {
     setup() {
         this.listen("updateFire",this.update);
-        let assetsDir = window.ASSETS || "/assets";
+        let assetsDir = window.ASSETS || "../assets";
         
         return Promise.all([
             import(assetsDir + "/shaders/fireball.frag.js"),
