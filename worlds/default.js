@@ -115,7 +115,7 @@ export function init(Constants) {
             card: {
                 name: "Gallery Card",
                 behaviorModules: ["ReplaceWorld"],
-                targetURL: "https://croquet.io/microverse",
+                targetURL: "https://croquet.github.io/gallery",
                 translation: rotateTo([0, 1.5, 4], -11.963, 2*Math.PI/7), 
                 //    translation: [4.440892098500626e-16, 2.5357677795120512, -7.9631457611584615],
                 //rotation: [0, Math.PI / 2, 0],
