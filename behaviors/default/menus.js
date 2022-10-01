@@ -12,8 +12,8 @@ class MenuPawn {
         this.menuItems = [];
         this.installMenu("+100 bots", "./assets/images/masks-theater.png", ()=>this.publish("menu", "addBots"));
         this.installMenu("Remove bots", "./assets/images/masks-theater-off.png", ()=>this.publish("menu", "killBots"));
-        this.installMenu("Toggle Sound", undefined, ()=>this.publish("menu", "startStopWind"));
-        this.installMenu("Toggle Fireball", undefined, ()=>this.publish("menu","FireballToggle"));
+        this.installMenu("Toggle Sound", "./assets/images/speaker-icon.png", ()=>this.publish("menu", "startStopWind"));
+        this.installMenu("Toggle Fireball", "./assets/images/fireball.png", ()=>this.publish("menu","FireballToggle"));
     }
 
     installMenu(menuText, menuImage, callback){
