@@ -87,11 +87,12 @@ export function init(Constants) {
                 ],
             },
         },
-        {
+
+        /*{
             card: {
                 name: "Croquet Card",
-                behaviorModules: ["ReplaceWorld"],
-                targetURL: "https://croquet.io/microverse/?world=test",
+                //behaviorModules: ["ReplaceWorld"],
+                //targetURL: "https://croquet.io/microverse/?world=test",
                 translation: [0, 1.5, -7.963],
                 //    translation: [4.440892098500626e-16, 2.5357677795120512, -7.9631457611584615],
                 //rotation: [0, Math.PI / 2, 0],
@@ -100,8 +101,8 @@ export function init(Constants) {
                 type: "2d",
                 textureType: "image",
                 textureLocation: "./assets/images/CroquetLogo_RGB.jpg",
-                //cardURL: "https://croquet.io",
-                //behaviorModules: ["URLLink"],
+                cardURL: "https://croquet.io",
+                behaviorModules: ["URLLink"],
                 fullBright: true,
                 frameColor: 0xcccccc,
                 color: 0xffffff,
@@ -109,7 +110,7 @@ export function init(Constants) {
                 depth: 0.05,
                 shadow: true,
             }
-        },
+        },*/
 
         {
             card: {
