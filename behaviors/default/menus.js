@@ -12,8 +12,19 @@ class MenuPawn {
         this.menuItems = [];
         this.installMenu("+100 bots", "./assets/images/masks-theater.png", ()=>this.publish("menu", "addBots"));
         this.installMenu("Remove bots", "./assets/images/masks-theater-off.png", ()=>this.publish("menu", "killBots"));
-        this.installMenu("Toggle Sound", "./assets/images/speaker-icon.png", ()=>this.publish("menu", "startStopWind"));
         this.installMenu("Toggle Fireball", "./assets/images/fireball.png", ()=>this.publish("menu","FireballToggle"));
+        this.installMenu("Toggle Sound", "./assets/images/speaker-icon.png", ()=>this.publish("menu", "startStopWind"));
+        this.installMenu("Code on Github", "./assets/images/github.png", ()=>this.linkTo("https://github.com/croquet/mythos"));
+    
+    }
+
+    linkTo(url) {
+        let div = document.createElement("div");
+        url = url || "https://croquet.io"; // default to Croquet
+        div.innerHTML = `<a id="link" target="_blank" rel="noopener noreferrer" href="${url}"></a>`;
+        let a = div.querySelector("#link");
+        a.click();
+        div.remove();
     }
 
     installMenu(menuText, menuImage, callback){

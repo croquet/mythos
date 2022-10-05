@@ -161,7 +161,7 @@ export function init(Constants) {
         {
             card: {
                 name: "About Mythos",
-                translation: rotateTo([0, 1.5, 4], -11.963, 5*Math.PI/7), //[-5, 2.1, -7.963],
+                translation: rotateTo([0, 1, 4], -11.963, 5*Math.PI/7), //[-5, 2.1, -7.963],
                 scale: [4, 4, 4],
                 rotation: [0, 4*Math.PI/7, 0],
                 layers: ["pointer"],
