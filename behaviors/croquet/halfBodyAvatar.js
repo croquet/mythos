@@ -278,6 +278,38 @@ class AvatarPawn {
         return 1;
     }
 
+    walk(time, delta, vq) {
+        const COLLIDE_THROTTLE = 50;
+        const THROTTLE = 15; // 20
+        if (this.collidePortal(vq)) {return;}
+        // test for terrain 
+
+        if (this.actor.fall && time - this.lastUpdateTime > THROTTLE) {
+            if (time - this.lastCollideTime > COLLIDE_THROTTLE) {
+                this.lastCollideTime = time;
+                vq = this.walkTerrain(vq); // calls collideBVH
+            }
+            this.lastUpdateTime = time;
+            vq = this.checkFall(vq);
+            vq = this.checkHillside(vq); // the hills are alive...
+            this.positionTo(vq.v, vq.q);
+        }
+    }
+
+    checkHillside(vq){
+
+        const EYE_HEIGHT = 2.5;
+        let terrainLayer = this.service("ThreeRenderManager").threeLayer("terrain");
+        terrainLayer.forEach(t=>{
+            let handlerModuleName = 'Terrain';
+            let pawn = t.wcPawn;
+            if (pawn.has(`${handlerModuleName}$TerrainPawn`, "getHeight")) {
+                vq.v[1] = pawn.call(`${handlerModuleName}$TerrainPawn`, "getHeight", vq.v, EYE_HEIGHT);
+            }
+        });
+        return vq;
+    }
+
     teardown() {
         delete this.bones;
         this.removeUpdateRequest(["HalfBodyAvatarEventHandler$AvatarPawn", "maybeMove"]);
