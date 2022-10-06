@@ -112,6 +112,8 @@ class AvatarPawn {
     addFoot() {
         let foot = this.shape.children.find((c) => c.name === "ghostfoot");
         if (foot) {foot.removeFromParent();}
+        return;
+        /*
 
         let circle = new Microverse.THREE.CircleGeometry(0.3, 32);
         circle.rotateX(-Math.PI / 2);
@@ -121,6 +123,7 @@ class AvatarPawn {
         foot.name = "ghostfoot";
 
         this.shape.add(foot);
+        */
     }
 
     move(type, xyz) {
