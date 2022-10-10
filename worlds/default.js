@@ -53,6 +53,7 @@ export function init(Constants) {
                 behaviorModules: ["Lights"],
                 dataType: "jpg",
                 dataLocation: "./assets/sky/aboveClouds.jpg",
+                attribution: "Above the Clouds texture from HDRMaps.com",
                 clearColor: 0xffffff,
             }
         },
@@ -69,6 +70,7 @@ export function init(Constants) {
                     -16.422857610412652,
                     215.58989538473676
                 ],
+                attribution: "https://www.clicktorelease.com/blog/vertex-displacement-noise-3d-webgl-glsl-three-js/",
             },
         },
         {
@@ -85,6 +87,7 @@ export function init(Constants) {
                     0,
                     0
                 ],
+                attribution: "Mirada for Ro.me",
             },
         },
 
@@ -119,8 +122,6 @@ export function init(Constants) {
                 replaceWorldTargetURL: "https://croquet.github.io/gallery",
                 replaceWorldOverrideOrigin: "(.*\.)?croquet.(io|dev)$",
                 translation: rotateTo([0, 1.5, 4], -11.963, 2*Math.PI/7),
-                //    translation: [4.440892098500626e-16, 2.5357677795120512, -7.9631457611584615],
-                //rotation: [0, Math.PI / 2, 0],
                 rotation: [0, 2*Math.PI/7, 0],
                 layers: ["pointer"],
                 scale: [4, 4, 4],
@@ -139,12 +140,10 @@ export function init(Constants) {
             card: {
                 name: "Physics Card",
                 translation: rotateTo([0, 1.5, 4], -11.963, 3*Math.PI/7),
-                //    translation: [4.440892098500626e-16, 2.5357677795120512, -7.9631457611584615],
-                //rotation: [0, Math.PI / 2, 0],
+                rotation: [0, 3*Math.PI/7, 0],
                 behaviorModules: ["ReplaceWorld"],
                 replaceWorldTargetURL: "https://croquet.github.io/physics/",
                 replaceWorldOverrideOrigin: "(.*\.)?croquet.(io|dev)$",
-                rotation: [0, 3*Math.PI/7, 0],
                 layers: ["pointer"],
                 scale: [4, 4, 4],
                 type: "2d",
@@ -162,8 +161,8 @@ export function init(Constants) {
             card: {
                 name: "About Mythos",
                 translation: rotateTo([0, 1, 4], -11.963, 5*Math.PI/7), //[-5, 2.1, -7.963],
-                scale: [4, 4, 4],
                 rotation: [0, 4*Math.PI/7, 0],
+                scale: [4, 4, 4],
                 layers: ["pointer"],
                 behaviorModules: ["PDFView"],
                 color: 8947848,
@@ -185,6 +184,7 @@ export function init(Constants) {
                 type: "object",
                 translation:[0, 0, 0],
                 shadow: true,
+                attribution: "Terra   Mike Linkovich (spacejack) on Github",
             }
         },
         {
@@ -226,6 +226,11 @@ export function init(Constants) {
                 ],
                 modelType: "glb",
                 name: "/temple_wmoss.glb",
+                translation: [
+                    137.04842673287243,
+                    -16.422857610412652,
+                    215.58989538473676
+                ],
                 rotation: [
                     0,
                     -0.8375393574138387,
@@ -235,13 +240,9 @@ export function init(Constants) {
                 shadow: true,
                 singleSided: true,
                 noFog: true,
-                translation: [
-                    137.04842673287243,
-                    -16.422857610412652,
-                    215.58989538473676
-                ],
                 type: "3d",
-                flatten: true
+                flatten: true,
+                attribution: "Havolik, modified by Kai Oldman",
             },
         }
     ];
