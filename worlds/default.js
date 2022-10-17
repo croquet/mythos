@@ -29,22 +29,22 @@ export function init(Constants) {
     }
 
     Constants.DefaultCards = [
-        {
-            card: {
-                name: "ambient sound",
-                translation: [0, 0, -2],
-                layers: ["pointer"],
-                type: "sound",
-                behaviorModules: ["AmbientSound"],
-                dataType: "acc",
-                dataLocation: "./assets/sounds/WindAmbience.aac",
-                textureLocation: "./assets/images/mythos.png",
-                loop: true,
-                volume: 0.2,
-                maxVolume: 0.3
-            },
-            id: "ambientSound"
-        },
+        // {
+        //     card: {
+        //         name: "ambient sound",
+        //         translation: [0, 0, -2],
+        //         layers: ["pointer"],
+        //         type: "sound",
+        //         behaviorModules: ["AmbientSound"],
+        //         dataType: "acc",
+        //         dataLocation: "./assets/sounds/WindAmbience.aac",
+        //         textureLocation: "./assets/images/mythos.png",
+        //         loop: true,
+        //         volume: 0.2,
+        //         maxVolume: 0.3
+        //     },
+        //     id: "ambientSound"
+        // },
         {
             card: {
                 name: "light",
