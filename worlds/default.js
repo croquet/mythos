@@ -6,7 +6,60 @@
 
 export function init(Constants) {
     Constants.AvatarNames = [
-        "newwhite", "madhatter", "marchhare", "queenofhearts", "cheshirecat", "alice"
+        {
+            type: "3d",
+            modelType: "glb",
+            dataLocation: "./assets/avatars/newwhite.zip",
+            dataRotation: [0, Math.PI, 0],
+            dataScale: [0.3, 0.3, 0.3],
+            behaviorModules: ["AvatarEventHandler"], // force our hillside walking behavior
+            avatarEventHandler: "AvatarEventHandler",
+        },
+        {
+            type: "3d",
+            modelType: "glb",
+            dataLocation: "./assets/avatars/madhatter.zip",
+            dataRotation: [0, Math.PI, 0],
+            dataScale: [0.3, 0.3, 0.3],
+            behaviorModules: ["AvatarEventHandler"], // force our hillside walking behavior
+            avatarEventHandler: "AvatarEventHandler",
+        },
+        {
+            type: "3d",
+            modelType: "glb",
+            dataLocation: "./assets/avatars/marchhare.zip",
+            dataRotation: [0, Math.PI, 0],
+            dataScale: [0.3, 0.3, 0.3],
+            behaviorModules: ["AvatarEventHandler"], // force our hillside walking behavior
+            avatarEventHandler: "AvatarEventHandler",
+        },
+        {
+            type: "3d",
+            modelType: "glb",
+            dataLocation: "./assets/avatars/queenofhearts.zip",
+            dataRotation: [0, Math.PI, 0],
+            dataScale: [0.3, 0.3, 0.3],
+            behaviorModules: ["AvatarEventHandler"], // force our hillside walking behavior
+            avatarEventHandler: "AvatarEventHandler",
+        },
+        {
+            type: "3d",
+            modelType: "glb",
+            dataLocation: "./assets/avatars/cheshirecat.zip",
+            dataRotation: [0, Math.PI, 0],
+            dataScale: [0.3, 0.3, 0.3],
+            behaviorModules: ["AvatarEventHandler"], // force our hillside walking behavior
+            avatarEventHandler: "AvatarEventHandler",
+        },
+        {
+            type: "3d",
+            modelType: "glb",
+            dataLocation: "./assets/avatars/alice.zip",
+            dataRotation: [0, Math.PI, 0],
+            dataScale: [0.3, 0.3, 0.3],
+            behaviorModules: ["AvatarEventHandler"], // force our hillside walking behavior
+            avatarEventHandler: "AvatarEventHandler",
+        },
     ];
 
     Constants.UserBehaviorDirectory = "behaviors/default";

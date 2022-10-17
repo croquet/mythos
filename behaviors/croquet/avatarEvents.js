@@ -2,10 +2,6 @@ class AvatarPawn {
     setup() {
         if (!this.isMyPlayerPawn) {return;}
 
-        this.maxFall = -100;
-        this.fallDistance = this.eyeHeight / 12;
-        // this.service("ThreeRenderManager").setupRenderer({antialias: true});
-
         this.addFirstResponder("pointerTap", {ctrlKey: true, altKey: true}, this);
         this.addEventListener("pointerTap", this.pointerTap);
 
@@ -69,9 +65,10 @@ class AvatarPawn {
         const COLLIDE_THROTTLE = 50;
         const THROTTLE = 15; // 20
         if (this.collidePortal(vq)) {return;}
-        // test for terrain 
+        // test for terrain
 
-        if (this.actor.fall && time - this.lastUpdateTime > THROTTLE) {
+        const spectator = this.wellKnownModel("modelRoot").broadcastMode && !this.actor.broadcaster;
+        if ((this.actor.fall || spectator) && time - this.lastUpdateTime > THROTTLE) {
             if (time - this.lastCollideTime > COLLIDE_THROTTLE) {
                 this.lastCollideTime = time;
                 vq = this.walkTerrain(vq); // calls collideBVH
