@@ -5,7 +5,8 @@
 class ReplaceWorldPawn {
 
     get targetURL() { return this.actor._cardData.replaceWorldTargetURL; }
-    get overrideOrigin() { return this.actor._cardData.replaceWorldOverrideOrigin; }
+    set targetURL(url) { if (this.targetURL !== url) this.say("setCardData", { replaceWorldTargetURL: url }); }
+    get preserveOrigin() { return this.actor._cardData.replaceWorldPreserveOrigin; }
 
     setup() {
         this.addEventListener("pointerDown", "onPointerDown");
@@ -23,12 +24,13 @@ class ReplaceWorldPawn {
     resolveTargetURL() {
         // if targetURL does not have a sessionName or password, we need to resolve it
         // we do this by appending our own sessionName and password to the URL
-        const target = new URL(this.targetURL, location.href);
+        const our = new URL(location.href);
+        const target = new URL(this.targetURL, our.href);
         const targetSearchParams = target.searchParams;
         const targetHashParams = new URLSearchParams(target.hash.slice(1));
+        // if the target has a sessionName or password, we don't need to resolve it
         let sessionName = targetSearchParams.get("q");
         let password = targetHashParams.get("pw");
-        const our = new URL(location.href);
         if (!sessionName || !password) {
             if (!sessionName) {
                 sessionName = our.searchParams.get("q");
@@ -42,34 +44,25 @@ class ReplaceWorldPawn {
                 target.hash = targetHashParams.toString();
             }
         }
-        for (const setting of [ "showSettings", "voiceChat" ]) {
+        // copy our options to the target
+        for (const setting of [ "showSettings", "voiceChat", "broadcastMode" ]) {
             if (our.searchParams.has(setting)) targetSearchParams.set(setting, "true");
         }
-        // allow overriding the origin if we are running there
-        if (this.overrideOrigin && new RegExp(this.overrideOrigin).test(location.origin)) {
+        // stay on the origin if we are running there
+        if (this.preserveOrigin && new RegExp(this.preserveOrigin).test(our.origin)) {
             // use our own origin as target origin
-            target.protocol = location.protocol;
-            target.host = location.host;
+            target.protocol = our.protocol;
+            target.host = our.host;
             // append target path to ours. this is designed to work both on /dev/ and /
             const targetPath = target.pathname.split("/"); // ["", "dir", "to", "target", "x.html"]
             targetPath.shift(); // ["dir", "to", "target", "x.html"]
-            const ourPath = location.pathname.split("/"); // ["", "dev", "myapp", "y.html"]
+            const ourPath = our.pathname.split("/"); // ["", "dev", "myapp", "y.html"]
             ourPath.splice(-2); // ["", "dev"]
             ourPath.push(...targetPath); // ["", "dev", "dir", "to", "target", "x.html"]
             target.pathname = ourPath.join("/"); // "/dev/dir/to/target/x.html"
         }
-        // remove origin from targetURL if it is the same as the target URL
-        // we could also construct an even shorter relative URL, but this is easier
-        let targetURL = target.toString();
-        if (target.origin === location.origin) {
-            targetURL = targetURL.slice(location.origin.length);
-            if (target.pathname === location.pathname) {
-                targetURL = targetURL.slice(location.pathname.length);
-            }
-        }
-        if (this.actor.targetURL !== targetURL) this.say("setCardData", { targetURL });
-        // send full URL to shell
-        return target.toString();
+        // return the resolved URL
+        return target.href;
     }
 
 }
