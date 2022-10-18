@@ -8,6 +8,7 @@ export function init(Constants) {
     Constants.AvatarNames = [
         {
             type: "3d",
+            name: "newwhite",
             modelType: "glb",
             dataLocation: "./assets/avatars/newwhite.zip",
             dataRotation: [0, Math.PI, 0],
@@ -18,6 +19,7 @@ export function init(Constants) {
         {
             type: "3d",
             modelType: "glb",
+            name: "madhatter",
             dataLocation: "./assets/avatars/madhatter.zip",
             dataRotation: [0, Math.PI, 0],
             dataScale: [0.3, 0.3, 0.3],
@@ -27,6 +29,7 @@ export function init(Constants) {
         {
             type: "3d",
             modelType: "glb",
+            name: "marchhare",
             dataLocation: "./assets/avatars/marchhare.zip",
             dataRotation: [0, Math.PI, 0],
             dataScale: [0.3, 0.3, 0.3],
@@ -36,6 +39,7 @@ export function init(Constants) {
         {
             type: "3d",
             modelType: "glb",
+            name: "queenofhearts",
             dataLocation: "./assets/avatars/queenofhearts.zip",
             dataRotation: [0, Math.PI, 0],
             dataScale: [0.3, 0.3, 0.3],
@@ -45,6 +49,7 @@ export function init(Constants) {
         {
             type: "3d",
             modelType: "glb",
+            name: "cheshirecat",
             dataLocation: "./assets/avatars/cheshirecat.zip",
             dataRotation: [0, Math.PI, 0],
             dataScale: [0.3, 0.3, 0.3],
@@ -54,6 +59,7 @@ export function init(Constants) {
         {
             type: "3d",
             modelType: "glb",
+            name: "alice",
             dataLocation: "./assets/avatars/alice.zip",
             dataRotation: [0, Math.PI, 0],
             dataScale: [0.3, 0.3, 0.3],
