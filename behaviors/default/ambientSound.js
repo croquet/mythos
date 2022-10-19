@@ -21,7 +21,7 @@ class AmbientSoundPawn {
         this.subscribe("global", "scaleWind", this.setScaleWind);
         this.subscribe("menu", "startStopWind", this.startStopWind);
         this.addEventListener("pointerDown", "trigger");
-        this.loadSplashScreen();
+        // this.loadSplashScreen();
         this.handler = () => this.start();
         document.addEventListener("click", this.handler);
     }
@@ -34,7 +34,7 @@ class AmbientSoundPawn {
             splashTexture =>{
                 let w = splashTexture.image.width;
                 let h = splashTexture.image.height;
-                this.fadeIn = new THREE.Mesh(new THREE.PlaneGeometry(size, size*h/w), 
+                this.fadeIn = new THREE.Mesh(new THREE.PlaneGeometry(size, size*h/w),
                     new THREE.MeshBasicMaterial({
                         color: 0xFFFFFF, fog: false, transparent: true, opacity: 1.0, map:splashTexture,
                         depthTest: false, depthWrite: false, side:THREE.DoubleSide, toneMapped: false
@@ -49,7 +49,7 @@ class AmbientSoundPawn {
         if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
            return; // no audio for you
         }
-          
+
         console.log("AUDIO PLAY?", /(iPad|iPhone|iPod)/g.test( navigator.userAgent ))
         this.audio = new Audio(this.file);
         this.audio.loop = this.loop;
@@ -90,7 +90,7 @@ class AmbientSoundPawn {
     }
 
     update(t){
- 
+
     }
 
     trigger(){
@@ -121,7 +121,7 @@ class AmbientSoundPawn {
         }
         this.removeEventListener("pointerDown", "toggle");
     }
-    
+
     teardown() {
         if(this.audio) this.stop();
         this.disposeFadeIn();
