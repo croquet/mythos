@@ -5,73 +5,21 @@
 
 
 export function init(Constants) {
-    Constants.AvatarNames = [
-        {
-            type: "3d",
-            name: "newwhite",
-            modelType: "glb",
-            dataLocation: "./assets/avatars/newwhite.zip",
-            dataRotation: [0, Math.PI, 0],
-            dataScale: [0.3, 0.3, 0.3],
-            behaviorModules: ["AvatarEventHandler"], // force our hillside walking behavior
-            avatarEventHandler: "AvatarEventHandler",
-        },
-        {
-            type: "3d",
-            modelType: "glb",
-            name: "madhatter",
-            dataLocation: "./assets/avatars/madhatter.zip",
-            dataRotation: [0, Math.PI, 0],
-            dataScale: [0.3, 0.3, 0.3],
-            behaviorModules: ["AvatarEventHandler"], // force our hillside walking behavior
-            avatarEventHandler: "AvatarEventHandler",
-        },
-        {
-            type: "3d",
-            modelType: "glb",
-            name: "marchhare",
-            dataLocation: "./assets/avatars/marchhare.zip",
-            dataRotation: [0, Math.PI, 0],
-            dataScale: [0.3, 0.3, 0.3],
-            behaviorModules: ["AvatarEventHandler"], // force our hillside walking behavior
-            avatarEventHandler: "AvatarEventHandler",
-        },
-        {
-            type: "3d",
-            modelType: "glb",
-            name: "queenofhearts",
-            dataLocation: "./assets/avatars/queenofhearts.zip",
-            dataRotation: [0, Math.PI, 0],
-            dataScale: [0.3, 0.3, 0.3],
-            behaviorModules: ["AvatarEventHandler"], // force our hillside walking behavior
-            avatarEventHandler: "AvatarEventHandler",
-        },
-        {
-            type: "3d",
-            modelType: "glb",
-            name: "cheshirecat",
-            dataLocation: "./assets/avatars/cheshirecat.zip",
-            dataRotation: [0, Math.PI, 0],
-            dataScale: [0.3, 0.3, 0.3],
-            behaviorModules: ["AvatarEventHandler"], // force our hillside walking behavior
-            avatarEventHandler: "AvatarEventHandler",
-        },
-        {
-            type: "3d",
-            modelType: "glb",
-            name: "alice",
-            dataLocation: "./assets/avatars/alice.zip",
-            dataRotation: [0, Math.PI, 0],
-            dataScale: [0.3, 0.3, 0.3],
-            behaviorModules: ["AvatarEventHandler"], // force our hillside walking behavior
-            avatarEventHandler: "AvatarEventHandler",
-        },
-    ];
+    Constants.AvatarNames = ["newwhite", "madhatter", "marchhare", "queenofhearts", "cheshirecat", "alice"].map((n) => ({
+        type: "3d",
+        name: n,
+        modelType: "glb",
+        avatarType: "wonderland",
+        dataLocation: `./assets/avatars/${n}.zip`,
+        dataRotation: [0, Math.PI, 0],
+        dataScale: [0.3, 0.3, 0.3],
+        behaviorModules: ["HillsideWalker"]
+    }));
 
     Constants.UserBehaviorDirectory = "behaviors/default";
     Constants.UserBehaviorModules = [
         "lights.js", "terrain.js", "ambientSound.js", "fireball.js",
-        "blowing.js", "crowd.js", "horse.js", "menus.js", "urlLink.js", "replaceWorld.js"
+        "blowing.js", "crowd.js", "horse.js", "menus.js", "urlLink.js", "replaceWorld.js", "walker.js"
     ];
 
 
@@ -93,7 +41,7 @@ export function init(Constants) {
                 name: "ambient sound",
                 // translation: [0, 0, -2],
                 // layers: ["pointer"],
-                type: "sound",
+                type: "object",
                 behaviorModules: ["AmbientSound"],
                 dataType: "aac",
                 dataLocation: "./assets/sounds/WindAmbience.aac",

@@ -2,9 +2,6 @@ class AvatarPawn {
     setup() {
         if (!this.isMyPlayerPawn) {return;}
 
-        this.maxFall = -100;
-        this.fallDistance = this.eyeHeight / 12;
-
         this.addFirstResponder("pointerTap", {ctrlKey: true, altKey: true}, this);
         this.addEventListener("pointerTap", this.pointerTap);
 
@@ -63,38 +60,56 @@ class AvatarPawn {
         this.removeLastResponder("keyUp", {ctrlKey: true}, this);
         this.removeEventListener("keyUp", this.keyUp);
     }
+}
 
-    walk(time, delta, vq) {
-        const COLLIDE_THROTTLE = 50;
-        const THROTTLE = 15; // 20
-        if (this.collidePortal(vq)) {return;}
-        // test for terrain
+export class WalkerPawn {
+    walkTerrain(vq) {
+        let walkLayer = this.service("ThreeRenderManager").threeLayer("walk");
+        if (!walkLayer) return vq;
 
-        const spectator = this.wellKnownModel("modelRoot").broadcastMode && !this.actor.broadcaster;
-        if ((this.actor.fall || spectator) && time - this.lastUpdateTime > THROTTLE) {
-            if (time - this.lastCollideTime > COLLIDE_THROTTLE) {
-                this.lastCollideTime = time;
-                vq = this.walkTerrain(vq); // calls collideBVH
-            }
-            this.lastUpdateTime = time;
-            vq = this.checkFall(vq);
-            vq = this.checkHillside(vq); // the hills are alive...
-            this.positionTo(vq.v, vq.q);
-        }
+        let collideList = walkLayer.filter(obj => obj.collider);
+        if (collideList.length === 0) {return vq;}
+        return this.collideBVH(collideList, vq);
     }
 
-    checkHillside(vq){
+    checkPortal(vq, _time, _delta) {
+        let collided = this.collidePortal(vq);
+        return [vq, collided];
+    }
 
-        const EYE_HEIGHT = 2.5;
-        let terrainLayer = this.service("ThreeRenderManager").threeLayer("terrain");
-        terrainLayer.forEach(t=>{
-            let handlerModuleName = 'Terrain';
-            let pawn = t.wcPawn;
-            if (pawn.has(`${handlerModuleName}$TerrainPawn`, "getHeight")) {
-                vq.v[1] = pawn.call(`${handlerModuleName}$TerrainPawn`, "getHeight", vq.v, EYE_HEIGHT);
-            }
-        });
-        return vq;
+    checkFall(vq, _time, _delta) {
+        if (!this.isFalling) {return [vq, false];}
+        let v = vq.v;
+        v = [v[0], v[1] - this.fallDistance, v[2]];
+        this.isFalling = false;
+        if (v[1] < this.maxFall) {
+            this.goHome();
+            return [{v: [0, 0, 0], q: [0, 0, 0, 1]}, true];
+        }
+        return [{v: v, q: vq.q}, false];
+    }
+
+    backoutFromFall(vq, _time, _delta) {
+        if (!this.checkFloor(vq)) {
+            // if the new position leads to a position where there is no walkable floor below
+            // it tries to move the avatar the opposite side of the previous good position.
+            vq.v = Microverse.v3_lerp(this.lastCollideTranslation, vq.v, -1);
+        } else {
+            this.lastCollideTranslation = vq.v;
+        }
+        return [vq, false];
+    }
+
+    bvh(vq, time, _delta) {
+        let collide_throttle = this.collide_throttle || 50;
+
+        if ((this.actor.fall || this.spectator) && time - this.lastCollideTime > collide_throttle) {
+            this.lastCollideTime = time;
+            let result = this.checkFall(vq);
+            if (result[1]) {return result;}
+            vq = this.walkTerrain(result[0]);
+        }
+        return [vq, false];
     }
 }
 
@@ -103,6 +118,10 @@ export default {
         {
             name: "AvatarEventHandler",
             pawnBehaviors: [AvatarPawn],
+        },
+        {
+            name: "BuiltinWalker",
+            pawnBehaviors: [WalkerPawn],
         }
     ]
 }

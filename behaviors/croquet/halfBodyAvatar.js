@@ -27,9 +27,6 @@ class AvatarPawn {
 
         if (!this.isMyPlayerPawn) {return;}
 
-        this.maxFall = -100;
-        this.fallDistance = this.eyeHeight / 12;
-
         this.addFirstResponder("pointerTap", {ctrlKey: true, altKey: true}, this);
         this.addEventListener("pointerTap", this.pointerTap);
 
@@ -115,8 +112,6 @@ class AvatarPawn {
     addFoot() {
         let foot = this.shape.children.find((c) => c.name === "ghostfoot");
         if (foot) {foot.removeFromParent();}
-        return;
-        /*
 
         let circle = new Microverse.THREE.CircleGeometry(0.3, 32);
         circle.rotateX(-Math.PI / 2);
@@ -126,7 +121,6 @@ class AvatarPawn {
         foot.name = "ghostfoot";
 
         this.shape.add(foot);
-        */
     }
 
     move(type, xyz) {
@@ -282,39 +276,6 @@ class AvatarPawn {
         if (this._target === avatar && Microverse.v3_magnitude(this.lookOffset) < 0.8) {return 0;}
         if (opacity === 0 || opacity === 1) {return opacity;}
         return 1;
-    }
-
-    walk(time, delta, vq) {
-        const COLLIDE_THROTTLE = 50;
-        const THROTTLE = 15; // 20
-        if (this.collidePortal(vq)) {return;}
-        // test for terrain
-
-        const spectator = this.wellKnownModel("modelRoot").broadcastMode && !this.actor.broadcaster;
-        if ((this.actor.fall || spectator) && time - this.lastUpdateTime > THROTTLE) {
-            if (time - this.lastCollideTime > COLLIDE_THROTTLE) {
-                this.lastCollideTime = time;
-                vq = this.walkTerrain(vq); // calls collideBVH
-            }
-            this.lastUpdateTime = time;
-            vq = this.checkFall(vq);
-            vq = this.checkHillside(vq); // the hills are alive...
-            this.positionTo(vq.v, vq.q);
-        }
-    }
-
-    checkHillside(vq){
-
-        const EYE_HEIGHT = 2.5;
-        let terrainLayer = this.service("ThreeRenderManager").threeLayer("terrain");
-        terrainLayer.forEach(t=>{
-            let handlerModuleName = 'Terrain';
-            let pawn = t.wcPawn;
-            if (pawn.has(`${handlerModuleName}$TerrainPawn`, "getHeight")) {
-                vq.v[1] = pawn.call(`${handlerModuleName}$TerrainPawn`, "getHeight", vq.v, EYE_HEIGHT);
-            }
-        });
-        return vq;
     }
 
     teardown() {
