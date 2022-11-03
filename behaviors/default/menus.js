@@ -33,8 +33,8 @@ class MenuPawn {
             let menuItemDiv = document.createElement("div");
             menuItemDiv.innerHTML = 
                 `<div id="worldMenu-foo" class="menu-label menu-item">
-                <span class="menu-label-text">${menuText}</span>
                 <div class="menu-icon"></div>
+                <span class="menu-label-text">${menuText}</span>
                 </div>`;
             let menuItem = menuItemDiv.firstChild;
             if (menuImage) {
