@@ -379,18 +379,14 @@ body.tilt > iframe {
 }
 
 #userCountReadout[presenting="true"] {
-    background-color: #300079;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
-@media (max-height: 480px) {
+@media (max-height: 800px) {
     .share-qr-canvas {
 	width: 120px;
 	height: 120px;
 	margin: 10px;
-    }
-
-    .menu-qr {
-	display: none;
     }
 
     .menu-label {
@@ -401,33 +397,12 @@ body.tilt > iframe {
     .worldMenu {
 	width: fit-content;
     }
-
-    #share-qr {
-	display: none;
-    }
 }
 
-@media (max-height: 700px) {
-    .share-qr-canvas {
-	width: 120px;
-	height: 120px;
-	margin: 10px;
-    }
 
+@media (max-height: 500px) {
     .menu-qr {
-	width: 100px;
-	height: 100px;
+	display: none;
     }
-
-    .menu-label {
-	font-size: 12px;
-	line-height: 14px;
-	height: 34px;
-    }
-
-    .worldMenu {
-	width: fit-content;
-    }
-
 }
 

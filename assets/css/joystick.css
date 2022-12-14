@@ -36,6 +36,47 @@
     background-color: rgba(124, 124, 124, 0.2);
 }
 
+#joystick-arrows {
+    position: fixed;
+    width: 0px;
+    height: 0px;
+    left: 60px;
+    top: 60px;
+    display: flex;
+}
+
+.joystick-arrow {
+    position: absolute;
+    padding: 0px;
+    margin: 0px;
+
+    width: 0px;
+    height: 0px;
+    left: -4px;
+    top: -4px;
+    
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+  
+    border-bottom: 8px solid #aaa;
+}
+
+#joystick-arrow-n {
+    transform: translate(0px, -48px);
+}
+
+#joystick-arrow-e {
+    transform:  translate(48px, 0px) rotate(90deg);
+}
+
+#joystick-arrow-w {
+    transform:  translate(-48px, 0px) rotate(-90deg);
+}
+
+#joystick-arrow-s {
+    transform:  translate(0px, 48px) rotate(180deg);
+}
+
 @media (max-width:600px), (max-height:600px) {
     #trackingknob {
         width: 86px;
@@ -51,6 +92,27 @@
     #knob {
         width: 43px;
         height: 43px;
+    }
+
+    #joystick-arrows {
+	left: 43px;
+	top: 43px;
+    }
+
+    #joystick-arrow-n {
+	transform: translate(0px, -34px);
+    }
+
+    #joystick-arrow-e {
+	transform:  translate(34px, 0px) rotate(90deg);
+    }
+
+    #joystick-arrow-w {
+	transform:  translate(-34px, 0px) rotate(-90deg);
+    }
+
+    #joystick-arrow-s {
+	transform:  translate(0px, 34px) rotate(180deg);
     }
 }
 
@@ -75,5 +137,26 @@
     #knob {
         width: 70px;
         height: 70px;
+    }
+
+    #joystick-arrows {
+	left: 70px;
+	top: 70px;
+    }
+
+    #joystick-arrow-n {
+	transform: translate(0px, -56px);
+    }
+
+    #joystick-arrow-e {
+	transform:  translate(56px, 0px) rotate(90deg);
+    }
+
+    #joystick-arrow-w {
+	transform:  translate(-56px, 0px) rotate(-90deg);
+    }
+
+    #joystick-arrow-s {
+	transform:  translate(0px, 56px) rotate(180deg);
     }
 }

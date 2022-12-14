@@ -1,8 +1,8 @@
 .allow-select {
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
 }
 
 #dialogTitle {
@@ -30,7 +30,7 @@
     justify-content: center;
     flex-direction: column;
     font-family: "Poppins";
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.8);
     border-radius: 15px;
     align-items: center;
     position: absolute;
@@ -63,6 +63,10 @@
     color: white;
     text-align: center;
     gap: 10px;
+}
+
+#joinPrompt.notUseEnter {
+    display: none;
 }
 
 .hidden {
@@ -140,8 +144,12 @@
     line-height: 45px;
     text-align: center;
     background-color: #28a745;
-    border-radius: 14px;
+    border-radius: 0.25rem;
     cursor: pointer;
+}
+
+#dialogEnterButton.notUseEnter {
+    display: none;
 }
 
 #enterButton:hover {
@@ -188,6 +196,14 @@
     background-color: #218838;
 }
 
+#dialogAcceptCancelButtons {
+    display: none;
+}
+
+#dialogAcceptCancelButtons.notUseEnter {
+    display: flex;
+}
+
 .dialogButtonsHolder.disabled #enterButton,
 .dialogButtonsHolder.disabled #acceptButton {
     background-color: #6c757d;
@@ -221,9 +237,9 @@
 
 #chatState {
     position: absolute;
-    width: 66px;
+    width: 70px;
     height: 50px;
-    background-color: #300079;
+    background-color: rgba(0, 0, 0, 0.5);
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
 }
@@ -270,9 +286,9 @@
     display: flex;
     flex-direction: row;
     position: absolute;
-    left: 66px;
+    left: 70px;
     height: 50px;
-    background-color: #300079;
+    background-color: rgba(0, 0, 0, 0.5);
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
 }
@@ -329,7 +345,7 @@
 
 #toggleConnection > .notJoined {
     background-color: #28a745;
-    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3C!-- Generator: Adobe Illustrator 24.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 40 40' style='enable-background:new 0 0 40 40;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23FFFFFF;%7D .st1%7Bfill:%232B2B2B;%7D .st2%7Bfill:%23DC3545;%7D%0A%3C/style%3E%3Cg%3E%3Cpath class='st0' d='M21.8,28.4c0.8-1,1.6-1.9,2.3-2.8c0.7-0.9,1.5-1.1,2.5-0.7c1.9,0.8,3.8,1.6,5.7,2.4c1,0.4,1.4,1.2,1.2,2.3 c-0.4,1.9-0.8,3.7-1.3,5.5c-0.3,1.1-1.1,1.4-2.1,1.4C18,36.6,6.9,27.2,4.9,15.3c-0.2-1.4-0.4-2.7-0.4-4.1C4.3,9.6,4.8,9,6.3,8.7 c1.7-0.4,3.4-0.7,5-1.2c1.1-0.3,1.9,0.1,2.3,1.1c0.9,1.9,1.7,3.9,2.5,5.8c0.4,1,0.2,1.8-0.7,2.5c-0.5,0.3-0.9,0.7-1.3,1.1 c-1.6,1.3-1.6,1.3-0.5,3.1C15.6,24.3,18.3,26.7,21.8,28.4z'/%3E%3C/g%3E%3Cg%3E%3Cpath class='st0' d='M27.7,8.1c0-0.2,0.1-0.3,0.2-0.4c0.1-0.1,0.2-0.2,0.4-0.2h0.4c0.2,0,0.3,0.1,0.4,0.2c0.1,0.1,0.2,0.2,0.2,0.4 v4.1h4.1c0.2,0,0.3,0.1,0.4,0.2c0.1,0.1,0.2,0.2,0.2,0.4v0.4c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.2,0.2-0.4,0.2h-4.1v4.1 c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.2,0.2-0.4,0.2h-0.4c-0.2,0-0.3-0.1-0.4-0.2c-0.1-0.1-0.2-0.2-0.2-0.4v-4.1h-4.1 c-0.2,0-0.3-0.1-0.4-0.2c-0.1-0.1-0.2-0.2-0.2-0.4v-0.4c0-0.2,0.1-0.3,0.2-0.4c0.1-0.1,0.2-0.2,0.4-0.2h4.1V8.1z'/%3E%3C/g%3E%3C/svg%3E%0A");    
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3C!-- Generator: Adobe Illustrator 24.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 40 40' style='enable-background:new 0 0 40 40;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23FFFFFF;%7D .st1%7Bfill:%232B2B2B;%7D .st2%7Bfill:%23DC3545;%7D%0A%3C/style%3E%3Cg%3E%3Cpath class='st0' d='M21.8,28.4c0.8-1,1.6-1.9,2.3-2.8c0.7-0.9,1.5-1.1,2.5-0.7c1.9,0.8,3.8,1.6,5.7,2.4c1,0.4,1.4,1.2,1.2,2.3 c-0.4,1.9-0.8,3.7-1.3,5.5c-0.3,1.1-1.1,1.4-2.1,1.4C18,36.6,6.9,27.2,4.9,15.3c-0.2-1.4-0.4-2.7-0.4-4.1C4.3,9.6,4.8,9,6.3,8.7 c1.7-0.4,3.4-0.7,5-1.2c1.1-0.3,1.9,0.1,2.3,1.1c0.9,1.9,1.7,3.9,2.5,5.8c0.4,1,0.2,1.8-0.7,2.5c-0.5,0.3-0.9,0.7-1.3,1.1 c-1.6,1.3-1.6,1.3-0.5,3.1C15.6,24.3,18.3,26.7,21.8,28.4z'/%3E%3C/g%3E%3Cg%3E%3Cpath class='st0' d='M27.7,8.1c0-0.2,0.1-0.3,0.2-0.4c0.1-0.1,0.2-0.2,0.4-0.2h0.4c0.2,0,0.3,0.1,0.4,0.2c0.1,0.1,0.2,0.2,0.2,0.4 v4.1h4.1c0.2,0,0.3,0.1,0.4,0.2c0.1,0.1,0.2,0.2,0.2,0.4v0.4c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.2,0.2-0.4,0.2h-4.1v4.1 c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.2,0.2-0.4,0.2h-0.4c-0.2,0-0.3-0.1-0.4-0.2c-0.1-0.1-0.2-0.2-0.2-0.4v-4.1h-4.1 c-0.2,0-0.3-0.1-0.4-0.2c-0.1-0.1-0.2-0.2-0.2-0.4v-0.4c0-0.2,0.1-0.3,0.2-0.4c0.1-0.1,0.2-0.2,0.4-0.2h4.1V8.1z'/%3E%3C/g%3E%3C/svg%3E%0A");
     /*background-image: url("./voice-chat-icons/png/join-call.png"); */
     background-size: 67%;
 }
@@ -343,7 +359,7 @@
     top: 14px;
     left: 100%;
     height: 1.5rem;
-    width: 3.8rem;
+    width: 6.4rem;
     color: #000;
     background-color: #ffc107 !important;
     border-radius: 0.25rem;
@@ -484,13 +500,13 @@
 }
 
 #toggleSettings > .enabled {
-    background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 25 25' style='enable-background:new 0 0 25 25;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bdisplay:none;%7D .st1%7Bdisplay:inline;fill:%23393838;%7D .st2%7Bfill:%23FFFFFF;%7D .st3%7Bfill:%23006837;%7D .st4%7Bfill:%23FFFFFF;stroke:%23393838;stroke-width:0.0519;stroke-miterlimit:10;%7D .st5%7Bfill:%23FFFFFF;stroke:%23393838;stroke-width:0.2282;stroke-miterlimit:10;%7D .st6%7Bfill:%23FFFFFF;stroke:%23393838;stroke-width:0.8088;stroke-miterlimit:10;%7D .st7%7Bfill:%23FFFFFF;stroke:%23393838;stroke-width:0.364;stroke-miterlimit:10;%7D .st8%7Bfill:%23E85656;stroke:%23393838;stroke-width:0.2485;stroke-miterlimit:10;%7D .st9%7Bfill:%23E85656;%7D .st10%7Bfill:%23E85656;stroke:%23393838;stroke-width:0.2282;stroke-miterlimit:10;%7D .st11%7Bfill:%23393838;%7D .st12%7Bfill:%23FFFFFF;stroke:%23393838;stroke-width:0.2485;stroke-miterlimit:10;%7D .st13%7Bfill:%23191919;%7D .st14%7Bfill:none;stroke:%23E85656;stroke-width:0.5;stroke-miterlimit:10;%7D%0A%3C/style%3E%3Cg id='Layer_1' class='st0'%3E%3Crect x='-35.05' y='-29.65' class='st1' width='270.4' height='215.61'/%3E%3C/g%3E%3Cg id='Layer_2'%3E%3Cg%3E%3Cpath class='st7' d='M12.53,8c0.39,0.06,0.77,0.11,1.14,0.17c0.27,0.05,0.38,0.2,0.39,0.48c0,0.02,0,0.04,0,0.06 c-0.1,0.44,0.08,0.73,0.5,0.88c0.07,0.02,0.17,0.03,0.23,0c0.16-0.07,0.3-0.17,0.45-0.25c0.22-0.12,0.38-0.1,0.56,0.08 c0.56,0.56,0.96,1.22,1.18,1.98c0.09,0.29,0.02,0.46-0.24,0.62c-0.01,0.01-0.02,0.01-0.03,0.02c-0.52,0.3-0.52,0.3-0.49,0.9 c0,0.06,0.06,0.13,0.11,0.16c0.15,0.1,0.31,0.18,0.46,0.28c0.22,0.14,0.28,0.3,0.21,0.54c-0.23,0.79-0.63,1.47-1.22,2.05 c-0.15,0.15-0.33,0.17-0.51,0.06c-0.16-0.09-0.31-0.19-0.47-0.26c-0.07-0.03-0.17-0.02-0.25,0c-0.43,0.14-0.56,0.43-0.5,0.88 c0.04,0.33-0.07,0.45-0.4,0.53c-0.76,0.19-1.52,0.19-2.28-0.01c-0.27-0.07-0.37-0.21-0.38-0.49c0-0.13-0.02-0.26,0-0.38 c0.03-0.21-0.09-0.29-0.23-0.4c-0.28-0.21-0.51-0.17-0.79,0.01c-0.41,0.27-0.51,0.25-0.85-0.12c-0.5-0.54-0.85-1.16-1.06-1.87 c-0.07-0.25-0.01-0.41,0.21-0.56c0.06-0.04,0.12-0.08,0.19-0.11c0.4-0.24,0.48-0.39,0.39-0.84c-0.01-0.06-0.07-0.12-0.13-0.16 c-0.15-0.1-0.31-0.18-0.46-0.27c-0.21-0.14-0.28-0.31-0.2-0.55c0.23-0.77,0.62-1.45,1.2-2.01C9.43,9.24,9.58,9.22,9.8,9.33 c0.03,0.01,0.06,0.03,0.09,0.05c0.33,0.31,0.66,0.27,0.99-0.01c0.06-0.05,0.11-0.13,0.11-0.2c0.02-0.17,0-0.35,0.01-0.52 c0.01-0.27,0.13-0.43,0.4-0.47C11.77,8.11,12.15,8.06,12.53,8z M15.45,15.08c0.19-0.35,0.38-0.67,0.54-1 c0.02-0.04-0.02-0.15-0.07-0.18c-0.18-0.12-0.38-0.21-0.56-0.34c-0.06-0.04-0.12-0.14-0.1-0.2c0.09-0.46,0.1-0.92-0.01-1.38 c-0.03-0.11,0.02-0.17,0.12-0.22c0.19-0.1,0.37-0.2,0.55-0.32c0.04-0.03,0.1-0.11,0.09-0.15c-0.15-0.37-0.33-0.72-0.61-1.02 c-0.23,0.13-0.44,0.25-0.65,0.37c-0.1,0.06-0.18,0.07-0.28-0.02c-0.34-0.3-0.72-0.53-1.15-0.66c-0.12-0.04-0.15-0.1-0.15-0.22 c0.01-0.2,0-0.4,0-0.6c0-0.12-0.03-0.2-0.16-0.2c-0.32,0-0.65,0-0.97,0c-0.12,0-0.15,0.07-0.15,0.18c0.01,0.21-0.01,0.41,0,0.62 c0.01,0.12-0.03,0.18-0.15,0.22c-0.43,0.14-0.81,0.36-1.15,0.66c-0.1,0.09-0.18,0.08-0.28,0.02c-0.18-0.11-0.36-0.2-0.53-0.31 c-0.1-0.06-0.17-0.05-0.23,0.05c-0.16,0.28-0.32,0.56-0.49,0.84c-0.06,0.1-0.03,0.15,0.07,0.21c0.19,0.1,0.39,0.21,0.57,0.33 c0.06,0.04,0.11,0.14,0.1,0.19c-0.1,0.46-0.1,0.92,0,1.38c0.01,0.06-0.04,0.16-0.1,0.2c-0.18,0.12-0.37,0.23-0.57,0.33 c-0.1,0.05-0.13,0.11-0.07,0.2c0.16,0.28,0.32,0.56,0.48,0.84c0.06,0.11,0.14,0.11,0.25,0.04c0.17-0.11,0.35-0.22,0.54-0.3 c0.07-0.03,0.19-0.03,0.24,0.01c0.35,0.3,0.74,0.52,1.17,0.67c0.12,0.04,0.15,0.1,0.15,0.22c-0.01,0.21,0,0.41,0,0.62 c0,0.11,0.03,0.18,0.16,0.18c0.32,0,0.65,0.01,0.97-0.01c0.05,0,0.14-0.1,0.14-0.16c0.02-0.2,0.01-0.4,0-0.6 c-0.01-0.14,0.03-0.22,0.17-0.26c0.42-0.13,0.8-0.36,1.13-0.66c0.09-0.08,0.17-0.08,0.27-0.02C14.95,14.8,15.17,14.93,15.45,15.08 z'/%3E%3Cpath class='st7' d='M10.75,12.68c-0.07-0.92,0.8-1.82,1.82-1.81c0.93,0.02,1.8,0.84,1.76,1.83c-0.04,0.98-0.79,1.75-1.78,1.76 C11.48,14.48,10.68,13.54,10.75,12.68z M13.43,12.68c0-0.5-0.39-0.9-0.88-0.91c-0.49-0.01-0.9,0.4-0.91,0.89 c-0.01,0.5,0.39,0.9,0.89,0.91C13.02,13.58,13.42,13.18,13.43,12.68z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
-    background-size: 130%;
+    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MS4zMiA0My44Ij4KICA8cGF0aCBkPSJNMzguNTMsMTUuODhjLS4wMiwuNTgtLjMyLDEtLjcyLDEuMzctLjkyLC44NC0xLjg0LDEuNjktMi43OCwyLjUxLS4yMSwuMTktLjI3LC4zNy0uMjYsLjY2LC4wMywxLDAsMi4wMSwuMDIsMy4wMSwwLC4xOSwuMDksLjQ0LC4yMywuNTcsLjg4LC44MiwxLjc4LDEuNjIsMi42NywyLjQyLC44OSwuOCwxLDEuMzksLjU2LDIuNTItLjcsMS44MS0xLjc0LDMuNDEtMi45Miw0LjkzLS40OSwuNjMtMS4xOSwuODItMi4wNywuNTQtMS4yLS4zOC0yLjQtLjc4LTMuNi0xLjE1LS4xOC0uMDUtLjQ0LDAtLjYxLC4wOS0uOTIsLjUtMS44MywxLjAyLTIuNzMsMS41NS0uMTMsLjA4LS4yNiwuMjMtLjI5LC4zNy0uMjgsMS4yNC0uNTQsMi40OS0uNzksMy43NC0uMTgsLjg4LS42OCwxLjM5LTEuNTgsMS41NS0yLC4zNS00LjAxLC4zNS02LjAxLDAtLjkyLS4xNi0xLjM3LS42My0xLjU2LTEuNTYtLjI0LTEuMi0uNDktMi40MS0uNzQtMy42MS0uMDYtLjI4LS4xOS0uNDQtLjQ3LS41OC0uODktLjQ2LTEuNzQtLjk5LTIuNjItMS40Ny0uMTctLjA5LS40Mi0uMTUtLjYtLjA5LTEuMiwuMzYtMi40LC43NS0zLjU5LDEuMTUtLjgzLC4yOC0xLjUzLC4xMi0yLjEtLjU3LTEuMjktMS41Ni0yLjI5LTMuMy0zLjAzLTUuMTktLjMxLS43Ny0uMTMtMS40OCwuNS0yLjA1LC45NC0uODQsMS44OS0xLjY4LDIuODQtMi41MSwuMjEtLjE4LC4yOC0uMzUsLjI3LS42NS0uMDQtMS4wMywwLTIuMDctLjAyLTMuMSwwLS4xOC0uMDctLjQyLS4yLS41NC0uODYtLjgxLTEuNzQtMS42MS0yLjY0LTIuMzktLjk0LS44Mi0xLjA5LTEuNDgtLjYxLTIuNjMsLjcyLTEuNzMsMS42NS0zLjMzLDIuODMtNC43OSwuNTctLjcxLDEuMjItLjkyLDIuMTEtLjY0LDEuMjIsLjM4LDIuNDMsLjc4LDMuNjUsMS4xNSwuMTcsLjA1LC40MSwuMDIsLjU3LS4wNiwuOTEtLjUyLDEuODEtMS4wNSwyLjctMS42MSwuMTUtLjEsLjMyLS4yOCwuMzUtLjQ1LC4yOS0xLjIzLC41NS0yLjQ2LC44MS0zLjY5LC4xOC0uODcsLjcxLTEuMzUsMS41Ny0xLjUsMS45OS0uMzUsMy45OC0uMzUsNS45Ni0uMDIsLjk5LC4xNywxLjM5LC42MSwxLjYsMS42MiwuMjQsMS4xNiwuNDksMi4zMiwuNzMsMy40OCwuMDYsLjMxLC4yMiwuNDcsLjUsLjYyLC44OCwuNDgsMS43NCwuOTksMi41OSwxLjUzLC4yMiwuMTQsLjM4LC4xNywuNjEsLjA5LDEuMi0uMzksMi40LS43NywzLjU5LTEuMTcsLjgxLS4yNywxLjUtLjExLDIuMDcsLjU0LDEuMzcsMS41NCwyLjI5LDMuMzQsMy4wNCw1LjIzLC4wOSwuMjMsLjExLC40OSwuMTcsLjc0Wm0tMTcuODksMTEuOTRjMy4zOS0uMTIsNS44Ni0yLjM3LDUuOS01Ljg4LC4wNC0zLjM4LTIuMzQtNS45MS01Ljg2LTUuOTMtMy4zOC0uMDItNS45MSwyLjMzLTUuOTIsNS44Ny0uMDEsMy40MiwyLjM5LDUuNzksNS44OCw1Ljk0WiIgZmlsbD0iIzJiMmIyYiIvPgo8L3N2Zz4=");
+    background-size: 75%;
 }
 
 #toggleSettings > .disabled {
-    background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 25 25' style='enable-background:new 0 0 25 25;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bdisplay:none;%7D .st1%7Bdisplay:inline;fill:%23393838;%7D .st2%7Bfill:%23FFFFFF;%7D .st3%7Bfill:%23006837;%7D .st4%7Bfill:%23FFFFFF;stroke:%23393838;stroke-width:0.0519;stroke-miterlimit:10;%7D .st5%7Bfill:%23FFFFFF;stroke:%23393838;stroke-width:0.2282;stroke-miterlimit:10;%7D .st6%7Bfill:%23FFFFFF;stroke:%23393838;stroke-width:0.8088;stroke-miterlimit:10;%7D .st7%7Bfill:%23FFFFFF;stroke:%23393838;stroke-width:0.364;stroke-miterlimit:10;%7D .st8%7Bfill:%23E85656;stroke:%23393838;stroke-width:0.2485;stroke-miterlimit:10;%7D .st9%7Bfill:%23E85656;%7D .st10%7Bfill:%23E85656;stroke:%23393838;stroke-width:0.2282;stroke-miterlimit:10;%7D .st11%7Bfill:%23393838;%7D .st12%7Bfill:%23FFFFFF;stroke:%23393838;stroke-width:0.2485;stroke-miterlimit:10;%7D .st13%7Bfill:%23191919;%7D .st14%7Bfill:none;stroke:%23E85656;stroke-width:0.5;stroke-miterlimit:10;%7D%0A%3C/style%3E%3Cg id='Layer_1' class='st0'%3E%3Crect x='-9.52' y='-29.58' class='st1' width='270.4' height='215.61'/%3E%3C/g%3E%3Cg id='Layer_2'%3E%3Cg%3E%3Cpath class='st7' d='M12.53,8c0.39,0.06,0.77,0.11,1.14,0.17c0.27,0.05,0.38,0.2,0.39,0.48c0,0.02,0,0.04,0,0.06 c-0.1,0.44,0.08,0.73,0.5,0.88c0.07,0.02,0.17,0.03,0.23,0c0.16-0.07,0.3-0.17,0.45-0.25c0.22-0.12,0.38-0.1,0.56,0.08 c0.56,0.56,0.96,1.22,1.18,1.98c0.09,0.29,0.02,0.46-0.24,0.62c-0.01,0.01-0.02,0.01-0.03,0.02c-0.52,0.3-0.52,0.3-0.49,0.9 c0,0.06,0.06,0.13,0.11,0.16c0.15,0.1,0.31,0.18,0.46,0.28c0.22,0.14,0.28,0.3,0.21,0.54c-0.23,0.79-0.63,1.47-1.22,2.05 c-0.15,0.15-0.33,0.17-0.51,0.06c-0.16-0.09-0.31-0.19-0.47-0.26c-0.07-0.03-0.17-0.02-0.25,0c-0.43,0.14-0.56,0.43-0.5,0.88 c0.04,0.33-0.07,0.45-0.4,0.53c-0.76,0.19-1.52,0.19-2.28-0.01c-0.27-0.07-0.37-0.21-0.38-0.49c0-0.13-0.02-0.26,0-0.38 c0.03-0.21-0.09-0.29-0.23-0.4c-0.28-0.21-0.51-0.17-0.79,0.01c-0.41,0.27-0.51,0.25-0.85-0.12c-0.5-0.54-0.85-1.16-1.06-1.87 c-0.07-0.25-0.01-0.41,0.21-0.56c0.06-0.04,0.12-0.08,0.19-0.11c0.4-0.24,0.48-0.39,0.39-0.84c-0.01-0.06-0.07-0.12-0.13-0.16 c-0.15-0.1-0.31-0.18-0.46-0.27c-0.21-0.14-0.28-0.31-0.2-0.55c0.23-0.77,0.62-1.45,1.2-2.01C9.43,9.24,9.58,9.22,9.8,9.33 c0.03,0.01,0.06,0.03,0.09,0.05c0.33,0.31,0.66,0.27,0.99-0.01c0.06-0.05,0.11-0.13,0.11-0.2c0.02-0.17,0-0.35,0.01-0.52 c0.01-0.27,0.13-0.43,0.4-0.47C11.77,8.11,12.15,8.06,12.53,8z'/%3E%3Cpath class='st7' d='M10.75,12.68c-0.07-0.92,0.8-1.82,1.82-1.81c0.93,0.02,1.8,0.84,1.76,1.83c-0.04,0.98-0.79,1.75-1.78,1.76 C11.48,14.48,10.68,13.54,10.75,12.68z M13.43,12.68c0-0.5-0.39-0.9-0.88-0.91c-0.49-0.01-0.9,0.4-0.91,0.89 c-0.01,0.5,0.39,0.9,0.89,0.91C13.02,13.58,13.42,13.18,13.43,12.68z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
-    background-size: 130%;
+    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MS4zMiA0My44Ij4KICA8cGF0aCBkPSJNMzguNTMsMTUuODhjLS4wMiwuNTgtLjMyLDEtLjcyLDEuMzctLjkyLC44NC0xLjg0LDEuNjktMi43OCwyLjUxLS4yMSwuMTktLjI3LC4zNy0uMjYsLjY2LC4wMywxLDAsMi4wMSwuMDIsMy4wMSwwLC4xOSwuMDksLjQ0LC4yMywuNTcsLjg4LC44MiwxLjc4LDEuNjIsMi42NywyLjQyLC44OSwuOCwxLDEuMzksLjU2LDIuNTItLjcsMS44MS0xLjc0LDMuNDEtMi45Miw0LjkzLS40OSwuNjMtMS4xOSwuODItMi4wNywuNTQtMS4yLS4zOC0yLjQtLjc4LTMuNi0xLjE1LS4xOC0uMDUtLjQ0LDAtLjYxLC4wOS0uOTIsLjUtMS44MywxLjAyLTIuNzMsMS41NS0uMTMsLjA4LS4yNiwuMjMtLjI5LC4zNy0uMjgsMS4yNC0uNTQsMi40OS0uNzksMy43NC0uMTgsLjg4LS42OCwxLjM5LTEuNTgsMS41NS0yLC4zNS00LjAxLC4zNS02LjAxLDAtLjkyLS4xNi0xLjM3LS42My0xLjU2LTEuNTYtLjI0LTEuMi0uNDktMi40MS0uNzQtMy42MS0uMDYtLjI4LS4xOS0uNDQtLjQ3LS41OC0uODktLjQ2LTEuNzQtLjk5LTIuNjItMS40Ny0uMTctLjA5LS40Mi0uMTUtLjYtLjA5LTEuMiwuMzYtMi40LC43NS0zLjU5LDEuMTUtLjgzLC4yOC0xLjUzLC4xMi0yLjEtLjU3LTEuMjktMS41Ni0yLjI5LTMuMy0zLjAzLTUuMTktLjMxLS43Ny0uMTMtMS40OCwuNS0yLjA1LC45NC0uODQsMS44OS0xLjY4LDIuODQtMi41MSwuMjEtLjE4LC4yOC0uMzUsLjI3LS42NS0uMDQtMS4wMywwLTIuMDctLjAyLTMuMSwwLS4xOC0uMDctLjQyLS4yLS41NC0uODYtLjgxLTEuNzQtMS42MS0yLjY0LTIuMzktLjk0LS44Mi0xLjA5LTEuNDgtLjYxLTIuNjMsLjcyLTEuNzMsMS42NS0zLjMzLDIuODMtNC43OSwuNTctLjcxLDEuMjItLjkyLDIuMTEtLjY0LDEuMjIsLjM4LDIuNDMsLjc4LDMuNjUsMS4xNSwuMTcsLjA1LC40MSwuMDIsLjU3LS4wNiwuOTEtLjUyLDEuODEtMS4wNSwyLjctMS42MSwuMTUtLjEsLjMyLS4yOCwuMzUtLjQ1LC4yOS0xLjIzLC41NS0yLjQ2LC44MS0zLjY5LC4xOC0uODcsLjcxLTEuMzUsMS41Ny0xLjUsMS45OS0uMzUsMy45OC0uMzUsNS45Ni0uMDIsLjk5LC4xNywxLjM5LC42MSwxLjYsMS42MiwuMjQsMS4xNiwuNDksMi4zMiwuNzMsMy40OCwuMDYsLjMxLC4yMiwuNDcsLjUsLjYyLC44OCwuNDgsMS43NCwuOTksMi41OSwxLjUzLC4yMiwuMTQsLjM4LC4xNywuNjEsLjA5LDEuMi0uMzksMi40LS43NywzLjU5LTEuMTcsLjgxLS4yNywxLjUtLjExLDIuMDcsLjU0LDEuMzcsMS41NCwyLjI5LDMuMzQsMy4wNCw1LjIzLC4wOSwuMjMsLjExLC40OSwuMTcsLjc0Wm0tMTcuODksMTEuOTRjMy4zOS0uMTIsNS44Ni0yLjM3LDUuOS01Ljg4LC4wNC0zLjM4LTIuMzQtNS45MS01Ljg2LTUuOTMtMy4zOC0uMDItNS45MSwyLjMzLTUuOTIsNS44Ny0uMDEsMy40MiwyLjM5LDUuNzksNS44OCw1Ljk0WiIgZmlsbD0iIzJiMmIyYiIvPgo8L3N2Zz4=");
+    background-size: 75%;
 }
 
 #chatHolder.hide-settings #toggleSettings > .enabled {
@@ -506,10 +522,14 @@
 #settings {
     /* transition: flex 0.5s; */
     display: flex;
+    flex-direction: column;
     align-items: center;
     scrollbar-width: thin;
     z-index: 3;
     background-color: #191919;
+    overflow-x: hidden;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
 
 #chatHolder.hide-settings #settings {
@@ -657,11 +677,6 @@
 
 #chatHolder.resize {
     cursor: ns-resize;
-}
-
-#settings {
-    flex-direction: column;
-    overflow-x: hidden;
 }
 
 #settingsButtons {
@@ -851,7 +866,6 @@
     display: flex;
     align-items: center;
     padding-left: 10px;
-    color: #898989;
     overflow: hidden;
     white-space: nowrap;
     flex-grow: 1
@@ -879,64 +893,104 @@
     font-weight: bold;
 }
 
-
-@media (min-width: 626px) {
-    .dialog-container {
-	width: 90px;
-    }
-
-    .dialogButtonsHolder {
-	margin-top: 30px;
-    }
-}
-
-@media (max-width: 625px) {
+@media (max-width: 600px), (max-height: 600px) {
     .dialogPanel {
+	height: 80%;
 	width: 90%;
-	display: block;
+	min-width: 300px;
+	min-height: 300px;
+	display: flex;
 	margin-left: auto;
 	margin-right: auto;
+	flex-direction: column;
+	justify-content: space-around;
     }
 
-    .dialogButtonHolder {
-	margin-top: 10px;
+
+
+    .content-container {
+	width: 95%;
+	height: 95%;
     }
 
-    .share-qr-canvas {
-	width: 120px;
-	height: 120px;
-	margin: 10px;
+    #dialogAvatarSelections {
+	height: 40px;
+	padding-bottom: 10px;
+    }
+
+    .namePrompt {
+	font-size: 12px;
+    }
+
+    .nameField {
+	height: 14px;
+	font-size: 12px;
+	padding-top: 2px;
+	flex-grow: 1;
+    }
+
+    #nameExplanation {
+	display: none;
+    }
+
+    #nameFilterWarning {
+	display: none;
+    }
+
+    #handednessLabel {
+	font-size: 12px;
+    }
+
+    .handedness-label {
+	font-size: 12px;
+    }
+
+    #share-qr {
+	display: none;
     }
 
     .topright {
 	right: 10px;
 	top: 10px;
     }
+}
+
+@media (max-height: 600px) {
+    .dialogPanel {
+	width: 80%;
+	height: 300px;
+    }
+
+    .panel-title {
+	margin: 2px 20px 2px 20px;
+    }
 
     #table-wrapper {
 	padding: 10px;
+	height: calc(100% - 50px);
     }
 
-    .content-container {
-	width: 95%;
+    #joinPrompt {
+	display: none;
     }
+
+    #avatarNameField {
+	margin-bottom: 10px;
+    }
+
+    .dialogButtonsHolder {
+	position: relative;
+	top: -65px;
+	width: 50%;
+	left: 50%;
+    }
+
 }
 
-@media (max-height: 700px) {
-    #dialogAvatarSelections {
-	height: 40px;
-	padding-bottom: 10px;
-    }
-
-    .share-qr-canvas {
-	width: 100px;
-	height: 100px;
-	margin: 10px;
-    }
-    
+@media (max-width: 600px) {
     .dialogPanel {
-        min-height: 500px;
-	height: 500px;
+	height: 80%;
+	width: 90%;
     }
 
     .panel-title {
@@ -944,81 +998,27 @@
     }
 
     #table-wrapper {
-	height: 400px;
-    }
-}
-
-@media (max-height: 480px) {
-    .panel-title {
-	margin: 2px 10px 2px 10px;
-    }
-
-   .namePrompt {
-	font-size: 12px;
-    }
-
-   .nameField {
-	height: 14px;
-	font-size: 12px;
-	padding-bottom: 2px;
-	flex-grow: 1;
-   }
-
-   #nameExplanation {
-       display: none;
-   }
-
-   #nameFilterWarning {
-       display: none;
-   }
-
-   #handednessLabel {
-       font-size: 12px;
-   }
-
-    #dialogEnterButton {
-	position: relative;
-	top: -66px;
-	right: -200px;
-    }
-
-    .share-qr-canvas {
-	width: 120px;
-	height: 120px;
-	margin: 10px;
+	height: calc(100% - 100px);
     }
 
     .share-settings-label {
 	font-size: 12px;
     }
 
-    .menu-qr {
-	display: none;
-    }
-
-    .dialogPanel {
-	min-height: 300px;
-	height: 300px;
-	width: 500px;
-    }
-
-    #share-qr {
-	display: none;
-    }
-
-    #table-wrapper {
-	height: 180px;
-    }
-
-    .btn-radio-button {
-	padding: 2px;
-    }
-
-    .handedness-label {
-	font-size: 12px;
-    }
-
     .stringInputHolder {
 	flex-direction: row;
+    }
+
+    .copy-link {
+	font-size: 12px;
+	height: 14px;
+	border: 1px solid grey;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	padding-left: 10px;
+	overflow: hidden;
+	white-space: nowrap;
+	flex-grow: 1;
     }
 }
