@@ -11,7 +11,7 @@
 // big weenie (large visible object in the distance)
 // set wind volume to height
 // move the water plane to be just in front of the avatar - can be smaller and cover more area
-// 
+//
 // X interface to turn music/sound on/off (and other things)
 // X turn off sound on phones - terrible w/o headphones
 // X horses
@@ -37,8 +37,8 @@ class TerrainActor {
 
     highWind(data){
         // wind values go from 0-1 and 1-0
-        if(data[0]>=0&&data[0]<=1) { 
-            this.publish("global", "setWind", data[0]); // 
+        if(data[0]>=0&&data[0]<=1) {
+            this.publish("global", "setWind", data[0]); //
             this.future(100).highWind([data[0]+data[1], data[1]]); // ramp up/down the wind
         }
         else { // start a new cycle
@@ -52,7 +52,7 @@ class TerrainActor {
 class TerrainPawn {
     setup() {
 //console.log("Constructing hillside");
-        this.numGrassBlades = 500000;
+        this.numGrassBlades = /OculusBrowser/g.test(navigator.userAgent) ? 100_000 : 500_000;
         let search = new URL(window.location).searchParams
         if (search.get("blades")) {
             this.numGrassBlades = parseInt(search.get("blades"), 10);
@@ -140,7 +140,7 @@ class TerrainPawn {
             var tMap = terramap_S.createTexture(this.heightField, LIGHT_DIR, noise_I);
             this.windIntensity = this.WIND_DEFAULT;
 
-//console.log("tMap:", tMap);       
+//console.log("tMap:", tMap);
 
 
             // Create a large patch of grass to fill the foreground
@@ -212,7 +212,7 @@ class TerrainPawn {
 
     setWind(val){
         if(this.grass){ // grass may not yet exist
-            this.windIntensity = this.WIND_DEFAULT+val*2.5; 
+            this.windIntensity = this.WIND_DEFAULT+val*2.5;
             var mat = this.grass.mesh.material;
             mat.uniforms['windIntensity'].value = this.windIntensity;
         }
@@ -236,7 +236,7 @@ class TerrainPawn {
             new Microverse.THREE.ImageLoader().load(URL, (image) => {
                 resolve(assetManager.fillCacheIfAbsent(URL, () => image, this.id));
             });
-        });        
+        });
     }
 
     loadFileAsset(URL){
@@ -262,7 +262,7 @@ class TerrainPawn {
         }
         if(h> this.waterGlobal && this.inWater){
             this.inWater = false;
-            this.publish("global", "scaleWind", 1); 
+            this.publish("global", "scaleWind", 1);
             console.log("out of water");
         }
         return h;
@@ -293,7 +293,7 @@ class TerrainPawn {
 
             let scaleLoc = 1/this.scaleHill;
             var avatarPos = new THREE.Vector2(scaleLoc*avatar.translation[0],-scaleLoc*avatar.translation[2])
-            var drawPos = new THREE.Vector2(avatarPos.x+cameraDir.x*this.grassPatchRadius, 
+            var drawPos = new THREE.Vector2(avatarPos.x+cameraDir.x*this.grassPatchRadius,
                 avatarPos.y-cameraDir.z*this.grassPatchRadius);
             cameraDir.set(cameraDir.x, -cameraDir.z, cameraDir.y);
 
@@ -318,7 +318,7 @@ class TerrainPawn {
         assetManager.revoke("./assets/images/noise.jpg", this.id);
         assetManager.revoke("./assets/images/grass.jpg", this.id);
         assetManager.revoke("./assets/images/terrain1.jpg", this.id);
-        assetManager.revoke("./assets/images/terrain2.jpg", this.id);       
+        assetManager.revoke("./assets/images/terrain2.jpg", this.id);
         assetManager.revoke("./assets/images/skyenv.jpg", this.id);
     }
 }
