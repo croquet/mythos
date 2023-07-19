@@ -6,6 +6,10 @@ class LightPawn {
         let camera = trm.camera;
         let group = this.shape;
 
+        if (this.actor._cardData.toneMappingExposure !== undefined) {
+            trm.renderer.toneMappingExposure = this.actor._cardData.toneMappingExposure;
+        }
+
         this.removeLights();
 
         this.setupCSM(scene, camera, Microverse.THREE);
@@ -63,6 +67,10 @@ class LightPawn {
                 if(e !== bg) if(bg) bg.dispose();
                 if(e) e.dispose();
                 texture.dispose();
+
+                if (this.actor._cardData.loadSynchronously) {
+                    this.publish(this.sessionId, "synchronousCardLoaded", {id: this.actor.id});
+                }
             });
         });
     }

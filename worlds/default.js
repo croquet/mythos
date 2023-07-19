@@ -62,9 +62,9 @@ export function init(Constants) {
                 dataLocation: "./assets/sky/aboveClouds.jpg",
                 attribution: "Above the Clouds texture from HDRMaps.com",
                 clearColor: 0xffffff,
+                loadSynchronously: true,
             }
         },
-
         {
             card: {
                 name: "fireball",
