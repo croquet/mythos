@@ -1,4 +1,13 @@
-class AvatarPawn {
+// the following import statement is solely for the type checking and
+// autocompletion features in IDE.  A Behavior cannot inherit from
+// another behavior or a base class but can use the methods and
+// properties of the card to which it is installed.
+// The prototype classes ActorBehavior and PawnBehavior provide
+// the features defined at the card object.
+
+import {PawnBehavior} from "../PrototypeBehavior";
+
+class AvatarPawn extends PawnBehavior {
     setup() {
         if (!this.isMyPlayerPawn) {return;}
 
@@ -20,8 +29,14 @@ class AvatarPawn {
         this.addEventListener("pointerWheel", this.pointerWheel);
 
         this.removeEventListener("pointerDoubleDown", "onPointerDoubleDown");
-        this.addFirstResponder("pointerDoubleDown", {shiftKey: true}, this);
-        this.addEventListener("pointerDoubleDown", this.addSticky);
+        let doubleDownAction = "doubleDown";
+        let eventMask = {shiftKey: true};
+        if (Microverse.Constants.PointerDoubleDownAction) {
+            doubleDownAction = Microverse.Constants.PointerDoubleDownAction;
+            eventMask = {};
+        }
+        this.addFirstResponder("pointerDoubleDown", eventMask, this);
+        this.addEventListener("pointerDoubleDown", doubleDownAction);
 
         this.addLastResponder("keyDown", {ctrlKey: true}, this);
         this.addEventListener("keyDown", this.keyDown);
@@ -62,7 +77,7 @@ class AvatarPawn {
     }
 }
 
-export class WalkerPawn {
+class WalkerPawn extends PawnBehavior {
     walkTerrain(vq) {
         let walkLayer = this.service("ThreeRenderManager").threeLayer("walk");
         if (!walkLayer) return vq;

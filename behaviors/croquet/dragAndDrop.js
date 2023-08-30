@@ -1,8 +1,21 @@
-class FileDragAndDropActor {
+// the following import statement is solely for the type checking and
+// autocompletion features in IDE.  A Behavior cannot inherit from
+// another behavior or a base class but can use the methods and
+// properties of the card to which it is installed.
+// The prototype classes ActorBehavior and PawnBehavior provide
+// the features defined at the card object.
+
+import {ActorBehavior} from "../PrototypeBehavior";
+
+class FileDragAndDropActor extends ActorBehavior {
     fileUploaded(data) {
         let {dataId, fileName, type, translation, rotation, animationClipIndex, dataScale} = data;
 
-        let cardType = type === "exr" ? "lighting" : (type === "svg" || type === "img" || type === "pdf" ? "2d" : "3d");
+        if (type == "mov" || type === "mp4") {
+            type = "video";
+        }
+
+        let cardType = type === "exr" ? "lighting" : (type === "svg" || type === "img" || type === "pdf" || type === "video" ? "2d" : "3d");
 
         let options = {
             name: fileName,
@@ -44,6 +57,31 @@ class FileDragAndDropActor {
                 depth: 0.05,
                 fullBright: true,
                 pdfLocation: dataId
+            };
+        } else if (type === "video") {
+            let textureWidth = data.width;
+            let textureHeight = data.height;
+            let width;
+            let height;
+            if (textureWidth > textureHeight) {
+                width = 3;
+                height = width * (textureHeight / textureWidth);
+            } else {
+                height = 3;
+                width = width * (textureWidth / textureHeight);
+            }
+            options = {
+                ...options,
+                scale: [4, 4, 4],
+                behaviorModules: ["VideoPlayer"],
+                type: "2d",
+                textureType: "video",
+                frameColor: 0xffffff,
+                color: 0xcccccc,
+                depth: 0.05,
+                fullBright: true,
+                textureLocation: dataId,
+                textureWidth, textureHeight, width, height
             };
         } else {
             options = {...options, dataLocation: dataId};

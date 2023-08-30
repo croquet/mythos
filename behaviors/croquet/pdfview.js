@@ -1,4 +1,13 @@
-class PDFActor {
+// the following import statement is solely for the type checking and
+// autocompletion features in IDE.  A Behavior cannot inherit from
+// another behavior or a base class but can use the methods and
+// properties of the card to which it is installed.
+// The prototype classes ActorBehavior and PawnBehavior provide
+// the features defined at the card object.
+
+import {ActorBehavior, PawnBehavior} from "../PrototypeBehavior";
+
+class PDFActor extends ActorBehavior {
     setup() {
         // these will be initialised by the first client to load the doc and figure out
         // a suitable aspect ratio.  pageGapPercent is needed for calculating overall
@@ -19,12 +28,20 @@ class PDFActor {
 
         this.listen("setCardData", "cardDataUpdated");
         this.subscribe(this.id, "buttonPageChange", "changePage");
+        this.subscribe(this.sessionId, "resetAppState", "resetAppState");
     }
 
     viewJoined(_viewId) {
     }
 
     viewExited(_viewId) {
+    }
+
+    resetAppState() {
+        this.scrollState = { page: 1, percent: 0 };
+        this.scrollState.upAvailable = false;
+        this.scrollState.downAvailable = true;
+        this.publish(this.id, "updateButtons");
     }
 
     addButtons() {
@@ -168,7 +185,7 @@ class PDFActor {
     }
 }
 
-class PDFPawn {
+class PDFPawn extends PawnBehavior {
     setup() {
         if (!window.pdfjsPromise) {
             window.pdfjsPromise = new Promise(resolve => {
@@ -395,7 +412,7 @@ class PDFPawn {
                 uv.needsUpdate = true;
 
                 if (!pageEntry.texture) pageEntry.texture = new Microverse.THREE.Texture(renderResult);
-                pageEntry.texture.colorSpace = THREE.SRGBColorSpace;
+                pageEntry.texture.colorSpace = Microverse.THREE.SRGBColorSpace;
                 if (pageMesh.material.map !== pageEntry.texture) {
                     pageMesh.material.map = pageEntry.texture;
                     pageEntry.texture.needsUpdate = true;
@@ -614,8 +631,10 @@ class PDFPawn {
         const cardWidth = this.cardWidth = width * cardScale;
         const cardHeight = this.cardHeight = height * cardScale;
         const obj = this.shape.children.find((o) => o.name === "2d");
-        obj.geometry.dispose();
-        obj.geometry = this.squareCornerGeometry(cardWidth, cardHeight, depth);
+        if (obj) {
+            obj.geometry.dispose();
+            obj.geometry = this.squareCornerGeometry(cardWidth, cardHeight, depth);
+        }
 
         this.pageGap = cardHeight * gapPercent / 100; // three.js units between displayed pages
         if (tellActor) this.say("setCardData", { height: cardHeight, width: cardWidth });
@@ -777,7 +796,7 @@ class PDFPawn {
     }
 }
 
-class PDFButtonActor {
+class PDFButtonActor extends ActorBehavior {
     // setup() {
     // }
 
@@ -788,7 +807,7 @@ class PDFButtonActor {
     }
 }
 
-class PDFButtonPawn {
+class PDFButtonPawn extends PawnBehavior {
     setup() {
         this.subscribe(this.id, "2dModelLoaded", "svgLoaded");
 
@@ -827,8 +846,6 @@ class PDFButtonPawn {
         hittableMesh.rotation.x = Math.PI / 2;
         hittableMesh.position.z = -depth / 2;
         this.shape.add(hittableMesh);
-        hittableMesh._baseRaycast = hittableMesh.raycast;
-        hittableMesh.raycast = (...args) => this.shape.visible ? hittableMesh._baseRaycast(...args) : false;
         this.shape.visible = false; // until placed
         this.updateState();
     }
@@ -842,7 +859,10 @@ class PDFButtonPawn {
         this.shape.visible = true;
         const wasEnabled = this.enabled;
         this.enabled = buttonState[this.actor.buttonName];
-        if (!wasVisible || this.enabled !== wasEnabled) this.setColor();
+        if (!wasVisible || this.enabled !== wasEnabled) {
+            this.service("RenderManager").dirtyLayer("pointer");
+            this.setColor();
+        }
     }
 
     setColor() {

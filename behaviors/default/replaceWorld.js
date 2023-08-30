@@ -18,7 +18,13 @@ class ReplaceWorldPawn {
         canvas.style.transition = "opacity 1s";
         canvas.style.opacity = 0;
         const targetURL = this.resolveTargetURL();
-        setTimeout(() => Microverse.sendToShell("world-replace", { targetURL}), 1000);
+        setTimeout(() => {
+            if (window.microverseEnablePortal) {
+                Microverse.sendToShell("world-replace", { targetURL});
+            } else {
+                window.location.replace(targetURL);
+            }
+        }, 1000);
     }
 
     resolveTargetURL() {
