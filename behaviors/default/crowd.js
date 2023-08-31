@@ -186,6 +186,7 @@ class CrowdPawn {
                 }
                 this.crowdMask.instanceMatrix.needsUpdate = true;
             }
+            this.crowdMask.computeBoundingSphere();
         }
     }
 
