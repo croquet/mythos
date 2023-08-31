@@ -1,12 +1,21 @@
 // Menus
 // Croquet Microverse
 
-class MenuActor {
+// the following import statement is solely for the type checking and
+// autocompletion features in IDE.  A Behavior cannot inherit from
+// another behavior or a base class but can use the methods and
+// properties of the card to which it is installed.
+// The prototype classes ActorBehavior and PawnBehavior provide
+// the features defined at the card object.
+
+import {ActorBehavior, PawnBehavior} from "../PrototypeBehavior";
+
+class MenuActor extends ActorBehavior {
     setup() {
     }
 }
 
-class MenuPawn {
+class MenuPawn extends PawnBehavior {
     setup(){
         if(this.menuItems)this.teardown();
         this.menuItems = [];

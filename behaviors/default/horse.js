@@ -1,9 +1,18 @@
 // Horse manager
 // Croquet Microverse
 // Generate and animate horses
-// The horse was 
+// The horse was
 
-class HorseActor {
+// the following import statement is solely for the type checking and
+// autocompletion features in IDE.  A Behavior cannot inherit from
+// another behavior or a base class but can use the methods and
+// properties of the card to which it is installed.
+// The prototype classes ActorBehavior and PawnBehavior provide
+// the features defined at the card object.
+
+import {ActorBehavior, PawnBehavior} from "../PrototypeBehavior";
+
+class HorseActor extends ActorBehavior {
     setup() {
 
         this.range = 1000;
@@ -32,7 +41,7 @@ class HorseActor {
     }
 }
 
-class HorsePawn {
+class HorsePawn extends PawnBehavior {
     setup() {
         console.log("HorsePawn.setup");
         this.subscribe("global", "horsePosition", this.updateHorse);

@@ -4,7 +4,17 @@
 // This was a quick hack to demonstrate - this should use a noise function and
 // the leaves should use a UV shader.
 
-class BlowingActor {
+// the following import statement is solely for the type checking and
+// autocompletion features in IDE.  A Behavior cannot inherit from
+// another behavior or a base class but can use the methods and
+// properties of the card to which it is installed.
+// The prototype classes ActorBehavior and PawnBehavior provide
+// the features defined at the card object.
+
+import {ActorBehavior, PawnBehavior} from "../PrototypeBehavior";
+
+
+class BlowingActor extends ActorBehavior {
     setup() {
         this.future(20).update();
     }
@@ -16,7 +26,7 @@ class BlowingActor {
     }
 }
 
-class BlowingPawn {
+class BlowingPawn extends PawnBehavior {
     setup() {
         // the 3D object will likely not be loaded yet. 
         this.subscribe(this.id, "3dModelLoaded", "modelLoaded");
