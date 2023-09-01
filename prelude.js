@@ -46,6 +46,8 @@ export async function prelude() {
           css.type = "text/css";
           css.id = "joystick-css";
           css.onload = resolve;
+          css.href = "/assets/css/joystick.css";
+          document.head.appendChild(css);
       })
     */
 
