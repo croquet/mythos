@@ -28,7 +28,7 @@ class ReplaceWorldPawn extends PawnBehavior {
         canvas.style.opacity = 0;
         const targetURL = this.resolveTargetURL();
         setTimeout(() => {
-            if (window.microverseEnablePortal) {
+            if (window.microverseEnablePortal || window.microverseFrameTypeReceived) {
                 Microverse.sendToShell("world-replace", { targetURL});
             } else {
                 window.location.replace(targetURL);
@@ -91,3 +91,5 @@ export default {
         },
     ]
 }
+
+/* globals Microverse */
