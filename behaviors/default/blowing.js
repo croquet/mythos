@@ -83,6 +83,7 @@ class BlowingPawn extends PawnBehavior {
             this.object.traverse( c =>{
                 if(c.geometry){
                     let shader = c.material.userData.shader;
+                    if (!shader) {return;}
                     shader.uniforms.time.value = 0.001*t;
                 }
             })
