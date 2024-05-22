@@ -54,16 +54,19 @@ class AmbientSoundPawn extends PawnBehavior {
         });
     }
 
-    start(){
-        if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-           return; // no audio for you
+    start() {
+        let yesAudio = true;
+        if(/webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            yesAudio = false;
         }
 
-        console.log("AUDIO PLAY?", /(iPad|iPhone|iPod)/g.test( navigator.userAgent ))
-        this.audio = new Audio(this.file);
-        this.audio.loop = this.loop;
-        this.audio.volume = this.volume;
-        this.play();
+        console.log("AUDIO PLAY?", yesAudio);
+        if (yesAudio) {
+            this.audio = new Audio(this.file);
+            this.audio.loop = this.loop;
+            this.audio.volume = this.volume;
+            this.play();
+        }
         if (this.handler) {
             document.removeEventListener('click', this.handler);
             delete this.handler;
